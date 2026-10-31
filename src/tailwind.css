@@ -1,3 +1,81 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  [hidden] {
+    display: none !important;
+  }
+
+  :focus-visible {
+    outline: 3px solid #235d4a !important;
+    outline-offset: 3px !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      scroll-behavior: auto !important;
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .header-shadow {
+    box-shadow: 0 1px 0 rgb(23 36 58 / 7%);
+  }
+
+  .text-orange {
+    color: #a63e20;
+  }
+
+  .text-muted {
+    color: #5c6878;
+  }
+
+  [class~="text-[#c95f3e]"],
+  [class~="text-[#d66a45]"] {
+    color: #a34325;
+  }
+
+  [class~="text-[#b6812c]"] {
+    color: #78500e;
+  }
+
+  [class~="text-[#ab6697]"] {
+    color: #82446b;
+  }
+
+  [class~="text-[#478391]"] {
+    color: #346777;
+  }
+
+  [class~="text-[#328466]"] {
+    color: #236548;
+  }
+
+  [class~="text-[#5474a8]"] {
+    color: #3f5d91;
+  }
+
+  [class~="text-[#64758e]"] {
+    color: #53647b;
+  }
+
+  [class~="text-[#21865d]"],
+  [class~="text-[#2b9871]"] {
+    color: #176f52;
+  }
+
+  [class~="text-[#68758a]"] {
+    color: #5c6878;
+  }
+
+  a.bg-orange,
+  button.bg-orange {
+    color: #24110b;
+  }
+}
