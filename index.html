@@ -1,0 +1,539 @@
+<!doctype html>
+<html lang="az">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="DigiTələbə — tələbələr üçün rəqəmsal xidmətlər, konspektlər və tədris materialları bazarı."
+    />
+    <meta name="theme-color" content="#fffaf7" />
+    <title>DigiTələbə — Tələbə bazarı</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17243a;
+        --muted: #748094;
+        --orange: #f47750;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 24px;
+      }
+
+      body {
+        min-width: 320px;
+        margin: 0;
+        background: #f8fafc;
+        color: var(--ink);
+        font-family: "DM Sans", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      .container {
+        width: min(1180px, calc(100% - 40px));
+        margin-inline: auto;
+      }
+
+      .header-shadow {
+        box-shadow: 0 1px 0 rgb(23 36 58 / 7%);
+      }
+
+      .brand-mark {
+        display: grid;
+        width: 39px;
+        height: 39px;
+        flex: 0 0 auto;
+        place-items: center;
+        border-radius: 13px;
+        background: var(--orange);
+        color: white;
+        box-shadow: 0 6px 14px rgb(244 119 80 / 23%);
+      }
+
+      .hero-banner {
+        position: relative;
+        isolation: isolate;
+        overflow: hidden;
+        background:
+          radial-gradient(ellipse at 86% 16%, rgb(255 255 255 / 54%), transparent 29%),
+          linear-gradient(120deg, #fff0e9 0%, #fff8f4 52%, #ffebe2 100%);
+      }
+
+      .hero-banner::before,
+      .hero-banner::after {
+        position: absolute;
+        z-index: -1;
+        border: 1px solid rgb(244 119 80 / 14%);
+        border-radius: 999px;
+        content: "";
+      }
+
+      .hero-banner::before {
+        top: -170px;
+        right: -85px;
+        width: 420px;
+        height: 420px;
+      }
+
+      .hero-banner::after {
+        right: -30px;
+        bottom: -250px;
+        width: 460px;
+        height: 460px;
+      }
+
+      .filter-chip {
+        transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+      }
+
+      .filter-chip:hover,
+      .filter-chip.active {
+        border-color: #ffe0d4;
+        background: #fff3ee;
+        color: #d95f3b;
+      }
+
+      .product-card {
+        transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .product-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 16px 38px rgb(23 36 58 / 9%);
+      }
+
+      .product-art {
+        display: grid;
+        height: 142px;
+        place-items: center;
+        overflow: hidden;
+        border-radius: 13px;
+      }
+
+      .product-icon {
+        display: grid;
+        width: 62px;
+        height: 62px;
+        place-items: center;
+        border: 1px solid rgb(255 255 255 / 75%);
+        border-radius: 20px;
+        background: rgb(255 255 255 / 83%);
+        box-shadow: 0 10px 24px rgb(23 36 58 / 9%);
+      }
+
+      .toast {
+        position: fixed;
+        z-index: 50;
+        right: 20px;
+        bottom: 20px;
+        max-width: calc(100% - 40px);
+        border: 1px solid #d5eee4;
+        border-radius: 12px;
+        background: white;
+        padding: 12px 16px;
+        color: #176f52;
+        box-shadow: 0 12px 35px rgb(23 36 58 / 13%);
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(8px);
+        transition: opacity 180ms ease, transform 180ms ease;
+      }
+
+      .toast.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          width: min(100% - 32px, 520px);
+        }
+
+        .product-art {
+          height: 118px;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          animation-duration: 0.01ms !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans text-ink">
+    <header class="header-shadow relative z-20 bg-white">
+      <div class="container flex min-h-[76px] items-center justify-between gap-4 py-3">
+        <a href="#" class="flex shrink-0 items-center gap-2.5" aria-label="DigiTələbə ana səhifə">
+          <span class="brand-mark" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <path d="M5 5.5C5 4.67 5.67 4 6.5 4H18v14H7a2 2 0 0 0-2 2V5.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M5 18a2 2 0 0 1 2-2h11M9 8h5M9 11h7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <span>
+            <span class="block font-display text-[19px] font-extrabold leading-tight tracking-[-.8px]">Digi<span class="text-orange">Tələbə</span></span>
+            <span class="mt-0.5 block text-[9px] font-semibold tracking-[.08em] text-muted">STUDENT MARKETPLACE</span>
+          </span>
+        </a>
+
+        <form id="search-form" class="hidden max-w-[500px] flex-1 lg:block" role="search">
+          <label class="flex h-[44px] items-center gap-3 rounded-xl border border-[#e7ebf0] bg-[#f8fafc] px-3.5 transition focus-within:border-orange/50 focus-within:bg-white">
+            <svg class="shrink-0 text-[#9ba5b3]" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <input id="search-input" class="w-full bg-transparent text-[13px] outline-none placeholder:text-[#9ba5b3]" type="search" placeholder="Konspekt, şablon, CV və ya xidmət axtar..." aria-label="Xidmət və material axtar" />
+            <button type="submit" class="rounded-lg bg-orange px-3 py-1.5 text-[11px] font-bold text-white transition hover:bg-orange-dark">Axtar</button>
+          </label>
+        </form>
+
+        <div class="flex shrink-0 items-center gap-2">
+          <a data-whatsapp="Salam! DigiTələbə-də satıcı olmaq istəyirəm." href="https://wa.me/?text=Salam%21%20DigiT%C9%99l%C9%99b%C9%99-d%C9%99%20sat%C4%B1c%C4%B1%20olmaq%20ist%C9%99yir%C9%99m." target="_blank" rel="noopener noreferrer" class="hidden h-10 items-center justify-center rounded-xl bg-orange px-4 text-[12px] font-bold text-white transition hover:bg-orange-dark sm:inline-flex">Satıcı Ol</a>
+          <a href="#contact" class="hidden h-10 items-center justify-center rounded-xl border border-[#e7ebf0] px-4 text-[12px] font-semibold text-ink transition hover:border-orange/50 hover:text-orange sm:inline-flex">Əlaqə</a>
+          <button id="menu-toggle" class="grid h-10 w-10 place-items-center rounded-xl text-ink hover:bg-[#f7f8fa] lg:hidden" type="button" aria-label="Menyunu aç" aria-expanded="false">
+            <svg width="21" height="21" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <nav class="border-t border-[#f1f2f5]" aria-label="Əsas menyu">
+        <div class="container hidden h-[46px] items-center gap-8 lg:flex">
+          <a class="text-[12px] font-bold text-orange" href="#">Ana Səhifə</a>
+          <a class="text-[12px] font-medium text-muted transition hover:text-ink" href="#products">Populyar Xidmətlər</a>
+          <a class="text-[12px] font-medium text-muted transition hover:text-ink" href="#how-it-works">Necə İşləyir?</a>
+          <a data-whatsapp="Salam! DigiTələbə-də satıcı olmaq istəyirəm." href="https://wa.me/?text=Salam%21%20DigiT%C9%99l%C9%99b%C9%99-d%C9%99%20sat%C4%B1c%C4%B1%20olmaq%20ist%C9%99yir%C9%99m." target="_blank" rel="noopener noreferrer" class="ml-auto text-[12px] font-semibold text-orange hover:text-orange-dark">Satıcı Ol <span aria-hidden="true">↗</span></a>
+        </div>
+        <div id="mobile-menu" class="hidden border-t border-[#f1f2f5] bg-white px-4 pb-4 pt-2 lg:hidden">
+          <form id="mobile-search-form" class="mb-2 flex h-10 items-center gap-2 rounded-lg border border-[#e7ebf0] bg-[#f8fafc] px-3 lg:hidden">
+            <svg class="text-muted" width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <input id="mobile-search-input" class="w-full bg-transparent text-sm outline-none" type="search" placeholder="Konspekt, şablon, CV və ya xidmət axtar..." aria-label="Xidmət və material axtar" />
+          </form>
+          <a class="block rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-[#fff5f0]" href="#">Ana Səhifə</a>
+          <a class="block rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-[#fff5f0]" href="#products">Populyar Xidmətlər</a>
+          <a class="block rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-[#fff5f0]" href="#how-it-works">Necə İşləyir?</a>
+          <a data-whatsapp="Salam! DigiTələbə-də satıcı olmaq istəyirəm." href="https://wa.me/?text=Salam%21%20DigiT%C9%99l%C9%99b%C9%99-d%C9%99%20sat%C4%B1c%C4%B1%20olmaq%20ist%C9%99yir%C9%99m." target="_blank" rel="noopener noreferrer" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-orange hover:bg-[#fff5f0]">Satıcı Ol ↗</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="container min-w-0 py-7 md:py-9">
+        <div class="hero-banner flex min-h-[420px] min-w-0 flex-col justify-between rounded-[22px] p-6 sm:p-9 lg:flex-row lg:items-center lg:p-11">
+          <div class="relative z-10 max-w-[540px]">
+            <span class="mb-5 inline-flex items-center gap-2 rounded-full border border-[#ffd8ca] bg-white/80 px-3 py-1.5 text-[10px] font-bold text-[#c95f3e]">
+              <span class="h-2 w-2 rounded-full bg-orange"></span>
+              Tələbələr üçün rəqəmsal bazar
+            </span>
+            <h1 class="max-w-[550px] font-display text-[34px] font-extrabold leading-[1.14] tracking-[-1.5px] text-ink sm:text-[44px] lg:text-[48px]">
+              Biliklərini və rəqəmsal işlərini <span class="text-orange">qazanca çevir!</span>
+            </h1>
+            <p class="mt-4 max-w-[440px] text-[13px] leading-6 text-[#68758a] sm:text-[14px]">
+              Konspekt, yaradıcı xidmət və tələbə bacarıqları — tap, sifariş et və ya öz işini tələbə icması ilə paylaş.
+            </p>
+            <div class="mt-6 flex flex-wrap gap-3">
+              <a href="#products" class="inline-flex h-11 items-center gap-2 rounded-xl bg-orange px-4 text-[12px] font-bold text-white shadow-[0_7px_18px_rgba(244,119,80,.22)] transition hover:-translate-y-0.5 hover:bg-orange-dark">
+                Xidmətlərə Bax <span aria-hidden="true">→</span>
+              </a>
+              <a data-whatsapp="Salam! DigiTələbə-də satıcı olmaq istəyirəm." href="https://wa.me/?text=Salam%21%20DigiT%C9%99l%C9%99b%C9%99-d%C9%99%20sat%C4%B1c%C4%B1%20olmaq%20ist%C9%99yir%C9%99m." target="_blank" rel="noopener noreferrer" class="inline-flex h-11 items-center gap-2 rounded-xl border border-[#f3c9ba] bg-white/80 px-4 text-[12px] font-bold text-ink transition hover:border-orange hover:text-orange">Satıcı Kimi Qoşul</a>
+            </div>
+            <div class="mt-7 flex flex-wrap gap-x-5 gap-y-2 text-[10px] font-semibold text-[#667287]">
+              <span class="inline-flex items-center gap-1.5"><span class="text-[#2b9871]">✓</span>Anında Yükləmə / Sifariş</span>
+              <span class="inline-flex items-center gap-1.5"><span class="text-[#2b9871]">✓</span>Təsdiqlənmiş Tələbə Satıcılar</span>
+              <span class="inline-flex items-center gap-1.5"><span class="text-[#2b9871]">✓</span>WhatsApp Vasitəsilə Sürətli Əlaqə</span>
+            </div>
+          </div>
+          <div class="relative mx-auto mt-8 hidden h-[260px] w-[270px] shrink-0 lg:ml-5 lg:mr-1 lg:block" aria-hidden="true">
+            <div class="absolute left-[22px] top-[13px] h-[225px] w-[225px] rounded-full border border-[#efb9a5]/60 bg-white/30"></div>
+            <div class="absolute left-[50px] top-[42px] h-[176px] w-[176px] rounded-full border border-dashed border-[#efa98f]/70"></div>
+            <div class="absolute left-[73px] top-[39px] w-[135px] rotate-[4deg] rounded-[15px] border border-white bg-white p-4 shadow-[0_18px_38px_rgba(102,65,48,.15)]">
+              <div class="mb-3 flex items-center justify-between"><span class="rounded-md bg-[#fff0e9] px-2 py-1 text-[7px] font-extrabold tracking-wider text-orange">TƏLƏBƏ İŞİ</span><span class="text-[13px] text-[#e8a343]">✦</span></div>
+              <div class="mb-2 h-2 w-[78%] rounded-full bg-[#26364d]"></div>
+              <div class="mb-4 h-1.5 w-[52%] rounded-full bg-[#d9dfe6]"></div>
+              <div class="space-y-2"><div class="h-1 w-full rounded-full bg-[#f1b49c]"></div><div class="h-1 w-[92%] rounded-full bg-[#e7ebef]"></div><div class="h-1 w-[84%] rounded-full bg-[#e7ebef]"></div><div class="h-1 w-full rounded-full bg-[#e7ebef]"></div></div>
+              <div class="mt-4 rounded-lg bg-[#f4f8f6] p-2"><div class="h-1 w-[70%] rounded-full bg-[#bdd8cc]"></div><div class="mt-1.5 h-1 w-[88%] rounded-full bg-[#dbe9e2]"></div></div>
+            </div>
+            <div class="absolute right-0 top-[30px] rounded-xl border border-white bg-white px-3 py-2.5 shadow-lg">
+              <span class="block text-[12px] font-extrabold text-ink">4.9 <span class="text-[#edaa38]">★</span></span><span class="text-[9px] text-muted">Tələbə rəyləri</span>
+            </div>
+            <div class="absolute bottom-[12px] left-0 rounded-xl border border-white bg-white px-3 py-2.5 shadow-lg">
+              <span class="flex items-center gap-2 text-[10px] font-bold"><span class="grid h-7 w-7 place-items-center rounded-lg bg-[#eaf6f0] text-[#328466]">↗</span>İşini paylaş, qazan</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container pb-3 pt-1" aria-label="DigiTələbə üstünlükləri">
+        <div class="grid gap-3 rounded-2xl border border-[#e9edf2] bg-white p-4 sm:grid-cols-3 sm:p-5">
+          <div class="flex items-center gap-3 sm:border-r sm:border-[#edf0f4] sm:pr-4">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#fff2eb] text-orange"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4-4m-4 4-4-4M5 17v2a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><p class="text-[11px] font-bold">Anında Yükləmə / Sifariş</p><p class="mt-1 text-[10px] text-muted">Material və xidmətlərə rahat çıxış</p></div>
+          </div>
+          <div class="flex items-center gap-3 sm:border-r sm:border-[#edf0f4] sm:px-4">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#edf7f1] text-[#328466]"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m12 3 7 3v5c0 4.5-2.7 7.7-7 10-4.3-2.3-7-5.5-7-10V6l7-3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div><p class="text-[11px] font-bold">Təsdiqlənmiş Tələbə Satıcılar</p><p class="mt-1 text-[10px] text-muted">Tələbə icmasından, tələbə icmasına</p></div>
+          </div>
+          <div class="flex items-center gap-3 sm:pl-4">
+            <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-[#eaf5f7] text-[#478391]"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.5a7.5 7.5 0 0 1-7.5 7.5H7l-4 2 1.2-4A7.5 7.5 0 1 1 20 11.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M8 11h8m-8 3h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></span>
+            <div><p class="text-[11px] font-bold">WhatsApp Vasitəsilə Sürətli Əlaqə</p><p class="mt-1 text-[10px] text-muted">Satıcı ilə birbaşa danış</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section id="products" class="container pb-14 pt-12">
+        <div class="mb-6 flex flex-wrap items-end justify-between gap-4">
+          <div>
+            <p class="mb-2 text-[10px] font-extrabold uppercase tracking-[1.5px] text-orange">Tələbə bazarından seçmələr</p>
+            <h2 class="font-display text-[26px] font-extrabold tracking-[-.9px] sm:text-[31px]">Populyar Xidmətlər</h2>
+            <p class="mt-2 text-[12px] text-muted">Faydalı materiallar və tələbələrin təklif etdiyi xidmətlər</p>
+          </div>
+          <span id="results-count" class="mb-1 text-[11px] font-medium text-muted">8 xidmət</span>
+        </div>
+
+        <div class="mb-5 flex gap-2 overflow-x-auto pb-1" role="group" aria-label="Xidmətləri kateqoriyaya görə filtrlə">
+          <button class="filter-chip active shrink-0 rounded-full border border-[#e7ebf0] bg-white px-3.5 py-2 text-[10px] font-semibold text-muted transition hover:border-orange/40" data-category="Hamısı" type="button">Hamısı</button>
+          <button class="filter-chip shrink-0 rounded-full border border-[#e7ebf0] bg-white px-3.5 py-2 text-[10px] font-semibold text-muted transition hover:border-orange/40" data-category="CV və Motivasiya Məktubu" type="button">CV və məktub</button>
+          <button class="filter-chip shrink-0 rounded-full border border-[#e7ebf0] bg-white px-3.5 py-2 text-[10px] font-semibold text-muted transition hover:border-orange/40" data-category="Konspekt və İmtahan Qeydləri" type="button">Konspektlər</button>
+          <button class="filter-chip shrink-0 rounded-full border border-[#e7ebf0] bg-white px-3.5 py-2 text-[10px] font-semibold text-muted transition hover:border-orange/40" data-category="Slayd və Təqdimat Hazırlanması" type="button">Təqdimat</button>
+          <button class="filter-chip shrink-0 rounded-full border border-[#e7ebf0] bg-white px-3.5 py-2 text-[10px] font-semibold text-muted transition hover:border-orange/40" data-category="Esse və Elmi Məqalə Dəstəyi" type="button">Esse və elmi iş</button>
+          <button class="filter-chip shrink-0 rounded-full border border-[#e7ebf0] bg-white px-3.5 py-2 text-[10px] font-semibold text-muted transition hover:border-orange/40" data-category="Rəqəmsal Kod və IT Layihələr" type="button">Kod və IT</button>
+          <button class="filter-chip shrink-0 rounded-full border border-[#e7ebf0] bg-white px-3.5 py-2 text-[10px] font-semibold text-muted transition hover:border-orange/40" data-category="Qrafik Dizayn & UI/UX Şablonları" type="button">Dizayn</button>
+          <button class="filter-chip shrink-0 rounded-full border border-[#e7ebf0] bg-white px-3.5 py-2 text-[10px] font-semibold text-muted transition hover:border-orange/40" data-category="Xarici Dil və Tərcümə Xidməti" type="button">Tərcümə</button>
+          <button class="filter-chip shrink-0 rounded-full border border-[#e7ebf0] bg-white px-3.5 py-2 text-[10px] font-semibold text-muted transition hover:border-orange/40" data-category="Repetitorluq / Özəl Dərs Sorğusu" type="button">Repetitorluq</button>
+        </div>
+
+        <div id="product-grid" class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="CV və Motivasiya Məktubu" data-name="Peşəkar CV və Cover Letter Hazırlanması Tələbələr və təcrübə proqramları üçün">
+            <div class="product-art relative bg-gradient-to-br from-[#fff0e9] to-[#f7d8ca]"><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#d66a45] shadow-sm">Tələbələr üçün</span><div class="product-icon text-[#d66a45]"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.5"/><path d="M8.5 16c.4-1.7 1.5-2.5 3.5-2.5s3.1.8 3.5 2.5M8 18h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+            <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#d66a45]">CV və Motivasiya Məktubu</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">Peşəkar CV və Cover Letter Hazırlanması</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">Tələbələr və təcrübə proqramları üçün</p><div class="mt-2 flex items-center justify-between"><span class="text-[10px] font-semibold"><span class="text-[#efa934]">★</span> 4.9 <span class="font-normal text-muted">(28)</span></span><span class="text-[14px] font-extrabold">10 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="Peşəkar CV və Cover Letter Hazırlanması" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
+          </article>
+
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Konspekt və İmtahan Qeydləri" data-name="Hüquq Mükəmməl İmtahan Konspekti PDF">
+            <div class="product-art relative bg-gradient-to-br from-[#edf6f1] to-[#d6e9df]"><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#328466] shadow-sm">PDF • Çox seçilən</span><div class="product-icon text-[#328466]"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.5h8l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v4h4M9 12h6M9 15h6M9 18h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+            <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#328466]">Konspekt və İmtahan Qeydləri</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">Hüquq Mükəmməl İmtahan Konspekti</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">İmtahana hazırlıq üçün PDF material</p><div class="mt-2 flex items-center justify-between"><span class="text-[10px] font-semibold"><span class="text-[#efa934]">★</span> 5.0 <span class="font-normal text-muted">(41)</span></span><span class="text-[14px] font-extrabold">5 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="Hüquq Mükəmməl İmtahan Konspekti (PDF)" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
+          </article>
+
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Esse və Elmi Məqalə Dəstəyi" data-name="Sərbəst işlərin hazırlanması">
+            <div class="product-art relative bg-[#0868c3]"><img class="h-full w-full object-cover" src="./image.png" alt="Sərbəst işlərin hazırlanması üçün təqdimat və tədris materialları" /><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#7167b4] shadow-sm">Tələbə xidməti</span></div>
+            <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#b6812c]">Esse və Elmi Məqalə Dəstəyi</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">Sərbəst işlərin hazırlanması</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">Universitet tapşırıqları üçün sərbəst işlərin hazırlanması xidməti</p><div class="mt-2 flex items-center justify-between"><span class="text-[10px] font-semibold"><span class="text-[#efa934]">★</span> 4.8 <span class="font-normal text-muted">(19)</span></span><span class="text-[14px] font-extrabold">8 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="Sərbəst işlərin hazırlanması" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
+          </article>
+
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Esse və Elmi Məqalə Dəstəyi" data-name="Akademik Esse və Kurs İşi Strukturlaşdırılması">
+            <div class="product-art relative bg-[#0868c3]"><img class="h-full w-full object-cover" src="./image%20copy.png" alt="Akademik esse və kurs işi hazırlanması üçün təqdimat və tədris materialları" /><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#b6812c] shadow-sm">Fərdi yanaşma</span></div>
+            <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#b6812c]">Esse və Elmi Məqalə Dəstəyi</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">Akademik Esse və Kurs İşi Strukturlaşdırılması</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">Planlama, struktur və redaktə dəstəyi</p><div class="mt-2 flex items-center justify-between"><span class="text-[10px] font-semibold"><span class="text-[#efa934]">★</span> 4.9 <span class="font-normal text-muted">(22)</span></span><span class="text-[14px] font-extrabold">12 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="Akademik Esse və Kurs İşi Strukturlaşdırılması" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
+          </article>
+
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Rəqəmsal Kod və IT Layihələr" data-name="Python Web Proqramlaşdırma Tapşırıq və Layihə Dəstəyi">
+            <div class="product-art relative bg-gradient-to-br from-[#eaf1fb] to-[#d8e3f3]"><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#5474a8] shadow-sm">Kod və layihə</span><div class="product-icon text-[#5474a8]"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 8-4 4 4 4m8-8 4 4-4 4m-3-11-2 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+            <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#5474a8]">Rəqəmsal Kod və IT Layihələr</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">Python / Web Proqramlaşdırma Tapşırıq və Layihə Dəstəyi</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">Öyrənmə və layihə məsləhəti</p><div class="mt-2 flex items-center justify-between"><span class="text-[10px] font-semibold"><span class="text-[#efa934]">★</span> 4.9 <span class="font-normal text-muted">(16)</span></span><span class="text-[14px] font-extrabold">15 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="Python / Web Proqramlaşdırma Tapşırıq və Layihə Dəstəyi" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
+          </article>
+
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Qrafik Dizayn & UI/UX Şablonları" data-name="Figma UI UX Veb Sayt Şablonları">
+            <div class="product-art relative bg-[#f7eef5]"><img class="h-full w-full object-cover" src="./image%20copy%202.png" alt="Figma UI/UX veb sayt şablonlarının önizləməsi" /><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#ab6697] shadow-sm">Figma resursu</span></div>
+            <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#ab6697]">Qrafik Dizayn & UI/UX Şablonları</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">Figma UI/UX Veb Sayt Şablonları</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">Hazır dizayn faylı və prototip</p><div class="mt-2 flex items-center justify-between"><span class="text-[10px] font-semibold"><span class="text-[#efa934]">★</span> 4.8 <span class="font-normal text-muted">(14)</span></span><span class="text-[14px] font-extrabold">7 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="Figma UI/UX Veb Sayt Şablonları" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
+          </article>
+
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Xarici Dil və Tərcümə Xidməti" data-name="İngilis Azərbaycan Dili Akademik Tərcümə Səhifə başı">
+            <div class="product-art relative bg-gradient-to-br from-[#eaf5f7] to-[#d5e9ec]"><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#478391] shadow-sm">Səhifə başı</span><div class="product-icon text-[#478391]"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18m0-18a14 14 0 0 0 0 18" stroke="currentColor" stroke-width="1.4"/><path d="M8 9h2m-1-1v5m6-4 2 4m-3-1h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div></div>
+            <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#478391]">Xarici Dil və Tərcümə Xidməti</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">İngilis / Azərbaycan Dili Akademik Tərcümə</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">Akademik mətnlər, səhifə başı</p><div class="mt-2 flex items-center justify-between"><span class="text-[10px] font-semibold"><span class="text-[#efa934]">★</span> 5.0 <span class="font-normal text-muted">(31)</span></span><span class="text-[14px] font-extrabold">3 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="İngilis / Azərbaycan Dili Akademik Tərcümə (Səhifə başı)" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
+          </article>
+
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Repetitorluq / Özəl Dərs Sorğusu" data-name="Riyaziyyat Statistika İmtahan Məsələlərinin Həlli Bələdçisi">
+            <div class="product-art relative bg-gradient-to-br from-[#f0f3f8] to-[#dfe5ef]"><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#64758e] shadow-sm">İmtahana hazırlıq</span><div class="product-icon text-[#64758e]"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 19h14M7 16l3-4 3 2 5-7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="16" r="1" fill="currentColor"/><circle cx="10" cy="12" r="1" fill="currentColor"/><circle cx="13" cy="14" r="1" fill="currentColor"/><circle cx="18" cy="7" r="1" fill="currentColor"/></svg></div></div>
+            <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#64758e]">Repetitorluq / Özəl Dərs Sorğusu</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">Riyaziyyat / Statistika İmtahan Məsələlərinin Həlli Bələdçisi</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">Addım-addım izahlı bələdçi</p><div class="mt-2 flex items-center justify-between"><span class="text-[10px] font-semibold"><span class="text-[#efa934]">★</span> 4.9 <span class="font-normal text-muted">(26)</span></span><span class="text-[14px] font-extrabold">6 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="Riyaziyyat / Statistika İmtahan Məsələlərinin Həlli Bələdçisi" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
+          </article>
+        </div>
+        <p id="no-results" class="hidden py-12 text-center text-sm text-muted">Bu axtarışa uyğun xidmət tapılmadı. Başqa söz yoxla.</p>
+      </section>
+
+      <section id="how-it-works" class="border-y border-[#e9edf2] bg-white py-14">
+        <div class="container">
+          <div class="mx-auto mb-8 max-w-[520px] text-center">
+            <p class="mb-2 text-[10px] font-extrabold uppercase tracking-[1.5px] text-orange">Sadə və rahat</p>
+            <h2 class="font-display text-[25px] font-extrabold tracking-[-.7px] sm:text-[30px]">Necə İşləyir?</h2>
+            <p class="mt-2 text-[12px] text-muted">Axtardığını tapmaq və sifariş vermək cəmi üç addımdır.</p>
+          </div>
+          <div class="grid gap-4 md:grid-cols-3">
+            <article class="relative rounded-2xl border border-[#e9edf2] bg-[#fbfcfd] p-5 text-center">
+              <span class="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-[#fff0e9] font-display text-[17px] font-extrabold text-orange">01</span>
+              <h3 class="mt-4 text-[13px] font-extrabold">Xidmət və ya Materialı Seç</h3>
+              <p class="mx-auto mt-2 max-w-[260px] text-[11px] leading-5 text-muted">Kateqoriyalara bax, sənə uyğun xidməti və ya materialı tap.</p>
+            </article>
+            <article class="relative rounded-2xl border border-[#e9edf2] bg-[#fbfcfd] p-5 text-center">
+              <span class="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-[#eaf5f7] font-display text-[17px] font-extrabold text-[#478391]">02</span>
+              <h3 class="mt-4 text-[13px] font-extrabold">WhatsApp İlə Birbaşa Sifariş Et</h3>
+              <p class="mx-auto mt-2 max-w-[260px] text-[11px] leading-5 text-muted">Satıcı ilə detalları dəqiqləşdir, ödənişi karta köçür.</p>
+            </article>
+            <article class="relative rounded-2xl border border-[#e9edf2] bg-[#fbfcfd] p-5 text-center">
+              <span class="mx-auto grid h-12 w-12 place-items-center rounded-2xl bg-[#edf7f1] font-display text-[17px] font-extrabold text-[#328466]">03</span>
+              <h3 class="mt-4 text-[13px] font-extrabold">Faylı və ya Xidməti Dərhal Təhvil Al</h3>
+              <p class="mx-auto mt-2 max-w-[260px] text-[11px] leading-5 text-muted">Materialını əldə et və ya sifariş etdiyin xidmətdən yararlan.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="seller" class="container py-12">
+        <div class="relative overflow-hidden rounded-[22px] bg-[#173b35] px-6 py-8 text-white sm:px-10 sm:py-9">
+          <div class="absolute -right-10 -top-28 h-[300px] w-[300px] rounded-full border border-white/10" aria-hidden="true"></div>
+          <div class="absolute -right-1 -top-20 h-[260px] w-[260px] rounded-full border border-white/10" aria-hidden="true"></div>
+          <div class="relative flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
+            <div class="max-w-[570px]">
+              <p class="mb-2 text-[10px] font-bold uppercase tracking-[1.6px] text-[#91cfb5]">Tələbə bacarığını paylaş</p>
+              <h2 class="font-display text-[23px] font-extrabold leading-tight tracking-[-.7px] sm:text-[28px]">Konspektini və bacarığını qazanca çevir!</h2>
+              <p class="mt-2 max-w-[470px] text-[12px] leading-6 text-white/70">Öz xidmətini və ya konspektini tələbə icması ilə paylaş, yeni müştərilərə çat.</p>
+            </div>
+            <a data-whatsapp="Salam! DigiTələbə-də öz xidmətimi və ya konspektimi əlavə etmək istəyirəm." href="https://wa.me/?text=Salam%21%20DigiT%C9%99l%C9%99b%C9%99-d%C9%99%20%C3%B6z%20xidm%C9%99timi%20v%C9%99%20ya%20konspektimi%20%C9%99lav%C9%99%20etm%C9%99k%20ist%C9%99yir%C9%99m." target="_blank" rel="noopener noreferrer" class="inline-flex h-11 shrink-0 items-center gap-2 rounded-xl bg-white px-4 text-[11px] font-extrabold text-[#173b35] transition hover:bg-[#e9f6f0]">Öz Xidmətini / Konspektini Əlavə Et <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="contact" class="border-t border-[#e9edf2] bg-white">
+      <div class="container flex flex-col items-start justify-between gap-4 py-6 sm:flex-row sm:items-center">
+        <a href="#" class="flex items-center gap-2" aria-label="DigiTələbə ana səhifə">
+          <span class="grid h-8 w-8 place-items-center rounded-[10px] bg-orange text-white"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 5.5C5 4.67 5.67 4 6.5 4H18v14H7a2 2 0 0 0-2 2V5.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M5 18a2 2 0 0 1 2-2h11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <span class="font-display text-[15px] font-extrabold tracking-[-.5px]">Digi<span class="text-orange">Tələbə</span></span>
+        </a>
+        <p class="text-[10px] text-muted">Tələbələrin biliyi, hər kəsin qazancı. © 2026 DigiTələbə</p>
+        <a href="mailto:hello@digitelebe.az" class="text-[11px] font-semibold text-muted transition hover:text-orange">hello@digitelebe.az</a>
+      </div>
+    </footer>
+
+    <div id="toast" class="toast text-[12px] font-semibold" role="status" aria-live="polite"></div>
+
+    <script>
+      const productCards = [...document.querySelectorAll(".product-card")];
+      const categoryControls = [...document.querySelectorAll(".filter-chip")];
+      const noResults = document.querySelector("#no-results");
+      const resultsCount = document.querySelector("#results-count");
+      const toast = document.querySelector("#toast");
+      let activeCategory = "Hamısı";
+      let searchTerm = "";
+      let toastTimer;
+
+      function updateProducts() {
+        let visibleCount = 0;
+        productCards.forEach((card) => {
+          const matchesCategory =
+            activeCategory === "Hamısı" || card.dataset.category === activeCategory;
+          const searchableText = `${card.dataset.name} ${card.dataset.category}`.toLocaleLowerCase("az");
+          const matchesSearch = searchableText.includes(searchTerm.toLocaleLowerCase("az"));
+          const isVisible = matchesCategory && matchesSearch;
+          card.classList.toggle("hidden", !isVisible);
+          if (isVisible) visibleCount += 1;
+        });
+        noResults.classList.toggle("hidden", visibleCount > 0);
+        resultsCount.textContent = `${visibleCount} xidmət`;
+      }
+
+      function setCategory(category) {
+        activeCategory = category;
+        categoryControls.forEach((control) => {
+          const isActive = control.dataset.category === category;
+          control.classList.toggle("active", isActive);
+          control.setAttribute("aria-pressed", String(isActive));
+        });
+        updateProducts();
+      }
+
+      function setSearch(value, shouldScroll = false) {
+        searchTerm = value.trim();
+        updateProducts();
+        if (shouldScroll) document.querySelector("#products").scrollIntoView({ behavior: "smooth" });
+      }
+
+      document.querySelectorAll("#search-form, #mobile-search-form").forEach((form) => {
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const input = form.querySelector('input[type="search"]');
+          const value = input.value;
+          document.querySelector("#search-input").value = value;
+          document.querySelector("#mobile-search-input").value = value;
+          setSearch(value, true);
+        });
+      });
+
+      document.querySelectorAll("#search-input, #mobile-search-input").forEach((input) => {
+        input.addEventListener("input", () => {
+          document.querySelector("#search-input").value = input.value;
+          document.querySelector("#mobile-search-input").value = input.value;
+          setSearch(input.value);
+        });
+      });
+
+      categoryControls.forEach((control) => {
+        control.addEventListener("click", () => {
+          setCategory(control.dataset.category);
+          document.querySelector("#products").scrollIntoView({ behavior: "smooth" });
+        });
+      });
+      setCategory(activeCategory);
+
+      const mobileMenu = document.querySelector("#mobile-menu");
+      const menuToggle = document.querySelector("#menu-toggle");
+      menuToggle.addEventListener("click", () => {
+        const isOpen = mobileMenu.classList.toggle("hidden") === false;
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
+        menuToggle.setAttribute("aria-label", isOpen ? "Menyunu bağla" : "Menyunu aç");
+      });
+
+      document.querySelectorAll("#mobile-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+          menuToggle.setAttribute("aria-expanded", "false");
+          menuToggle.setAttribute("aria-label", "Menyunu aç");
+        });
+      });
+
+      function showToast(message) {
+        toast.textContent = message;
+        toast.classList.add("show");
+        window.clearTimeout(toastTimer);
+        toastTimer = window.setTimeout(() => toast.classList.remove("show"), 2800);
+      }
+
+      const whatsappNumber = "994704027949";
+
+      document.querySelectorAll(".whatsapp-order").forEach((link) => {
+        const product = link.dataset.product;
+        const message = `Salam! "${product}" xidməti ilə maraqlanıram. Zəhmət olmasa, sifariş barədə məlumat verin.`;
+        link.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+      });
+
+      document.querySelectorAll("[data-whatsapp]").forEach((link) => {
+        link.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(link.dataset.whatsapp)}`;
+      });
+
+      document.querySelectorAll('a[href^="https://wa.me/"]').forEach((link) => {
+        link.addEventListener("click", () => {
+          showToast("WhatsApp açılır — söhbəti başlatmaq üçün kontakt seçin.");
+        });
+      });
+    </script>
+  </body>
+</html>
