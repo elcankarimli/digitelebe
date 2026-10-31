@@ -169,7 +169,12 @@
       }
 
       .product-card {
+        flex-direction: column;
         transition: transform 180ms ease, box-shadow 180ms ease;
+      }
+
+      .product-card:not(.hidden) {
+        display: flex;
       }
 
       .product-card:hover {
@@ -183,6 +188,7 @@
 
       .product-card > div:last-child {
         display: flex;
+        flex: 1;
         flex-direction: column;
       }
 
@@ -204,6 +210,8 @@
 
       .product-card > div:last-child > .card-actions {
         order: 5;
+        margin-top: auto;
+        padding-top: 0.75rem;
       }
 
       .product-card .mt-2.flex > span:first-child {
@@ -288,7 +296,8 @@
       .service-dialog {
         width: min(100% - 32px, 560px);
         max-width: none;
-        max-height: min(80vh, 720px);
+        max-height: min(85vh, 720px);
+        overflow-y: auto;
         border: 0;
         border-radius: 24px;
         padding: 0;
@@ -320,10 +329,17 @@
       @media (max-width: 767px) {
         .service-dialog {
           width: 100%;
-          max-height: 82dvh;
+          max-height: 85vh;
           margin: auto 0 0;
           border-radius: 24px 24px 0 0;
-          padding-bottom: env(safe-area-inset-bottom);
+        }
+
+        .service-dialog-action {
+          position: sticky;
+          bottom: 0;
+          padding: 12px 20px calc(12px + env(safe-area-inset-bottom));
+          border-top: 1px solid #e9edf2;
+          background: #fff;
         }
 
         .timeline::before {
@@ -560,33 +576,33 @@
         </div>
 
         <!-- Verified rating markup can be added to each card's price row once real reviews exist. -->
-        <div id="product-grid" class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 xl:grid-cols-4">
-          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="CV və Motivasiya Məktubu" data-name="Peşəkar CV və Motivasiya Məktubunun Hazırlanması Tələbələr və təcrübə proqramları üçün" data-product="Peşəkar CV və Motivasiya Məktubunun Hazırlanması" data-price="10" data-includes="[YER_TUTUCU]" data-duration="[YER_TUTUCU]" data-format="[YER_TUTUCU]" data-sample="[YER_TUTUCU]">
+        <div id="product-grid" class="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3">
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="CV və Motivasiya Məktubu" data-name="CV və Motivasiya Məktubu" data-title-full="Peşəkar CV və Motivasiya Məktubu" data-product="Peşəkar CV və Motivasiya Məktubunun Hazırlanması" data-price="10" data-price-from="false" data-unit="sifariş" data-summary="Təcrübə, işə qəbul və proqram müraciətləri üçün səliqəli CV və motivasiya məktubu." data-includes="Sənin məlumatlarına əsasən yeni və ya yenilənmiş CV|Müraciət üçün fərdi motivasiya məktubu|PDF və redaktə oluna bilən fayl" data-needs="Mövcud CV (varsa)|Təhsil, təcrübə, bacarıqlar|Müraciət etdiyin vəzifə və ya proqram" data-duration="1–2 iş günü" data-revisions="2 pulsuz düzəliş, təhvildən sonra 48 saat ərzində" data-sample="" data-note="Məlumatların düzgünlüyünə sən cavabdehsən, saxta təcrübə və ya sənəd əlavə olunmur." data-format="PDF və redaktə oluna bilən fayl">
             <div class="product-art relative bg-gradient-to-br from-[#fff0e9] to-[#f7d8ca]"><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#d66a45] shadow-sm">Tələbələr üçün</span><div class="product-icon text-[#d66a45]"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="9" r="2.3" stroke="currentColor" stroke-width="1.5"/><path d="M8.5 16c.4-1.7 1.5-2.5 3.5-2.5s3.1.8 3.5 2.5M8 18h8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
             <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#d66a45]">CV və Motivasiya Məktubu</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">CV və Motivasiya Məktubu</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">Tələbələr və təcrübə proqramları üçün</p><div class="mt-2 flex items-center justify-between"><span class="rounded-full bg-[#fff2eb] px-2 py-1 text-[10px] font-semibold text-orange">Yeni</span><span class="text-[14px] font-extrabold">10 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="Peşəkar CV və Motivasiya Məktubunun Hazırlanması" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
           </article>
 
-          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Konspekt və İmtahan Qeydləri" data-name="Hüquq İmtahan Konspekti PDF" data-product="Hüquq İmtahan Konspekti (PDF)" data-price="5" data-includes="[YER_TUTUCU]" data-duration="[YER_TUTUCU]" data-format="PDF" data-sample="[YER_TUTUCU]">
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Konspekt və İmtahan Qeydləri" data-name="Hüquq İmtahan Konspekti PDF" data-title-full="Hüquq İmtahan Konspekti (PDF)" data-product="Hüquq İmtahan Konspekti (PDF)" data-price="5" data-price-from="false" data-unit="fayl" data-summary="İmtahana hazırlıq üçün qısa, strukturlaşdırılmış PDF material." data-includes="PDF format|Əsas mövzuların xülasəsi|Sadə struktur və başlıqlar" data-needs="Fənnin və mövzunun adı" data-duration="Ödənişdən sonra fayl WhatsApp-da göndərilir" data-revisions="Hazır fayldır, məzmun dəyişdirilmir. Açıq texniki səhv olarsa düzəldilir." data-sample="" data-note="Material tələbə tərəfindən hazırlanmış şəxsi konspektdir, rəsmi dərslik əvəzi deyil. Üçüncü tərəfin müəllif hüququ olan mətnlər kopyalanmır." data-format="PDF">
             <div class="product-art relative bg-gradient-to-br from-[#edf6f1] to-[#d6e9df]"><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#328466] shadow-sm">PDF material</span><div class="product-icon text-[#328466]"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.5h8l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v4h4M9 12h6M9 15h6M9 18h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
             <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#328466]">Konspekt və İmtahan Qeydləri</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">Hüquq İmtahan Konspekti (PDF)</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">İmtahana hazırlıq üçün PDF material</p><div class="mt-2 flex items-center justify-between"><span class="rounded-full bg-[#fff2eb] px-2 py-1 text-[10px] font-semibold text-orange">Yeni</span><span class="text-[14px] font-extrabold">5 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="Hüquq İmtahan Konspekti (PDF)" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
           </article>
 
-          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Yazı Planı və Redaktə Dəstəyi" data-name="Yazı Planı və Redaktə Məsləhəti" data-product="Yazı Planı və Redaktə Məsləhəti" data-price="12" data-includes="[YER_TUTUCU]" data-duration="[YER_TUTUCU]" data-format="[YER_TUTUCU]" data-sample="[YER_TUTUCU]">
-            <div class="product-art relative bg-[#0868c3]"><img class="h-full w-full object-cover" src="./image%20copy.png" alt="Yazı planı və redaktə məsləhəti üçün tədris materialları" loading="lazy" decoding="async" /><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#b6812c] shadow-sm">Fərdi yanaşma</span></div>
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Yazı Planı və Redaktə Dəstəyi" data-name="Yazı Planı və Redaktə Məsləhəti" data-title-full="Yazı Planı və Redaktə Məsləhəti" data-product="Yazı Planı və Redaktə Məsləhəti" data-price="12" data-price-from="false" data-unit="sifariş" data-summary="Öz yazdığın mətn üçün plan, struktur və redaktə məsləhəti." data-includes="Mətnin quruluşu üzrə rəy|Plan və başlıq təklifləri|Üslub və qrammatika qeydləri" data-needs="Sənin öz yazdığın mətn və ya qaralama|Mövzu və tələblər" data-duration="1–2 iş günü (mətnin həcmindən asılı olaraq)" data-revisions="1 pulsuz düzəliş, təhvildən sonra 48 saat ərzində" data-sample="" data-note="Xidmət tələbənin öz mətni üçün dəstəkdir. Mətnin sənin adına tam hazırlanması edilmir." data-format="">
+            <div class="product-art relative bg-gradient-to-br from-[#fff0e9] to-[#f2d8ca]"><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#b6812c] shadow-sm">Fərdi yanaşma</span><div class="product-icon text-[#b6812c]"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 3.5h8l4 4V20a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V3.5Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M14 4v4h4M9 12h6M9 15h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="m14 17 3.5-3.5 2 2L16 19h-2v-2Z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div></div>
             <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#b6812c]">Yazı Planı və Redaktə Dəstəyi</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">Yazı Planı və Redaktə Məsləhəti</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">Tələbənin öz işi üçün plan, struktur və redaktə</p><div class="mt-2 flex items-center justify-between"><span class="rounded-full bg-[#fff2eb] px-2 py-1 text-[10px] font-semibold text-orange">Yeni</span><span class="text-[14px] font-extrabold">12 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="Yazı Planı və Redaktə Məsləhəti" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
           </article>
 
-          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Rəqəmsal Kod və IT Layihələr" data-name="Python / Web Proqramlaşdırma Dərsi və Layihə Məsləhəti" data-product="Python / Web Proqramlaşdırma Dərsi və Layihə Məsləhəti" data-price="15" data-includes="[YER_TUTUCU]" data-duration="[YER_TUTUCU]" data-format="[YER_TUTUCU]" data-sample="[YER_TUTUCU]">
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Rəqəmsal Kod və IT Layihələr" data-name="Proqram Yazılması (kiçik layihələr)" data-title-full="Proqram Yazılması (kiçik layihələr)" data-product="Proqram Yazılması (kiçik layihələr)" data-price="15" data-price-from="true" data-unit="layihə" data-summary="Kiçik skript, bot və ya sadə veb səhifə hazırlanması." data-includes="Tələbin analizi və qiymətin razılaşdırılması|İşlək kod və qısa istifadə təlimatı|Təhvildən sonra kiçik düzəlişlər" data-needs="Nə lazım olduğunun təsviri|Varsa nümunə və ya istinad|İstədiyin texnologiya (məs. Python, JavaScript)" data-duration="Həcmə görə söhbətdə razılaşdırılır" data-revisions="Razılaşdırılmış çərçivədə, təhvildən sonra 48 saat ərzində 1 düzəliş" data-sample="" data-note="Qiymət kiçik layihələrin başlanğıc qiymətidir, dəqiq məbləğ həcmə görə razılaşdırılır. Kurs işi, laboratoriya və imtahan tapşırıqları bu xidmətə daxil deyil." data-format="">
             <div class="product-art relative bg-gradient-to-br from-[#eaf1fb] to-[#d8e3f3]"><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#5474a8] shadow-sm">Kod və layihə</span><div class="product-icon text-[#5474a8]"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m8 8-4 4 4 4m8-8 4 4-4 4m-3-11-2 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
-            <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#5474a8]">Rəqəmsal Kod və IT Layihələr</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">Python / Web Dərsi</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">Öyrənmə və layihə məsləhəti</p><div class="mt-2 flex items-center justify-between"><span class="rounded-full bg-[#fff2eb] px-2 py-1 text-[10px] font-semibold text-orange">Yeni</span><span class="text-[14px] font-extrabold">15 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="Python / Web Proqramlaşdırma Dərsi və Layihə Məsləhəti" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
+            <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#5474a8]">Rəqəmsal Kod və IT Layihələr</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">Proqram Yazılması (kiçik layihələr)</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">Müddət: Həcmə görə söhbətdə razılaşdırılır</p><div class="mt-2 flex items-center justify-between"><span class="rounded-full bg-[#fff2eb] px-2 py-1 text-[10px] font-semibold text-orange">Yeni</span><span class="text-[14px] font-extrabold">15 <span class="text-[10px]">AZN-dən</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="Proqram Yazılması (kiçik layihələr)" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
           </article>
 
-          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Qrafik Dizayn & UI/UX Şablonları" data-name="Figma UI UX Veb Sayt Şablonları" data-product="Figma UI/UX Veb Sayt Şablonları" data-price="7" data-includes="[YER_TUTUCU]" data-duration="[YER_TUTUCU]" data-format="[YER_TUTUCU]" data-sample="[YER_TUTUCU]">
-            <div class="product-art relative bg-[#f7eef5]"><img class="h-full w-full object-cover" src="./image%20copy%202.png" alt="Figma UI/UX veb sayt şablonlarının önizləməsi" loading="lazy" decoding="async" /><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#ab6697] shadow-sm">Figma resursu</span></div>
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Qrafik Dizayn & UI/UX Şablonları" data-name="Figma UI UX Veb Sayt Şablonları" data-title-full="Figma UI/UX Şablonları" data-product="Figma UI/UX Veb Sayt Şablonları" data-price="7" data-price-from="false" data-unit="şablon" data-summary="Veb və mobil layihələr üçün hazır Figma şablonu." data-includes="Redaktə oluna bilən Figma faylı|Komponentlər və rəng/şrift sistemi" data-needs="Hansı layihə üçün lazım olduğu" data-duration="Ödənişdən sonra faylın linki göndərilir" data-revisions="Hazır şablon dəyişdirilmir. Fayl açılmazsa, yenidən göndərilir." data-sample="" data-note="Yalnız yenidən satış və ya istifadə icazəsi olan şablonlar təqdim olunur. Şablonu başqalarına yenidən satmaq olmaz." data-format="">
+            <div class="product-art relative bg-gradient-to-br from-[#f7eef5] to-[#e6d9eb]"><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#ab6697] shadow-sm">Figma resursu</span><div class="product-icon text-[#ab6697]"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M8 3h4v6H8a3 3 0 1 1 0-6Zm4 0h4a3 3 0 1 1 0 6h-4V3Zm0 6h4a3 3 0 1 1 0 6h-4V9Zm0 6v3a3 3 0 1 1-3-3h3Zm-4-6h4v6H8a3 3 0 1 1 0-6Z" fill="currentColor"/></svg></div></div>
             <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#ab6697]">Qrafik Dizayn & UI/UX Şablonları</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">Figma UI/UX Şablonları</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">Hazır dizayn faylı və prototip</p><div class="mt-2 flex items-center justify-between"><span class="rounded-full bg-[#fff2eb] px-2 py-1 text-[10px] font-semibold text-orange">Yeni</span><span class="text-[14px] font-extrabold">7 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="Figma UI/UX Veb Sayt Şablonları" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
           </article>
 
-          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Xarici Dil və Tərcümə Xidməti" data-name="İngilis Azərbaycan Dili Mətn Tərcüməsi Səhifə başı" data-product="İngilis / Azərbaycan Dili Mətn Tərcüməsi (Səhifə başı)" data-price="3" data-includes="[YER_TUTUCU]" data-duration="[YER_TUTUCU]" data-format="[YER_TUTUCU]" data-sample="[YER_TUTUCU]">
+          <article class="product-card min-w-0 rounded-[17px] border border-[#e9edf2] bg-white p-2.5 sm:p-3" data-category="Xarici Dil və Tərcümə Xidməti" data-name="İngilis Azərbaycan Dili Mətn Tərcüməsi Səhifə başı" data-title-full="İngilis / Azərbaycan Tərcüməsi" data-product="İngilis / Azərbaycan Dili Mətn Tərcüməsi (Səhifə başı)" data-price="3" data-price-from="false" data-unit="səhifə" data-summary="Mətnlərin ingilis və Azərbaycan dilləri arasında tərcüməsi." data-includes="Mətnin mənasına sadiq tərcümə|Terminlərin ardıcıllığı|Son oxu və yoxlama" data-needs="Tərcümə olunacaq mətn (Word, PDF və ya mətn)|Hədəf dil və istifadə məqsədi" data-duration="Hər 5 səhifə üçün təxminən 1 iş günü" data-revisions="Mənaca səhv olarsa pulsuz düzəldilir, təhvildən sonra 48 saat ərzində" data-sample="" data-note="1 səhifə təxminən 250 söz hesab olunur. Rəsmi notarial tərcümə deyil." data-format="">
             <div class="product-art relative bg-gradient-to-br from-[#eaf5f7] to-[#d5e9ec]"><span class="absolute left-2.5 top-2.5 rounded-full bg-white px-2 py-1 text-[9px] font-bold text-[#478391] shadow-sm">Səhifə başı</span><div class="product-icon text-[#478391]"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18m0-18a14 14 0 0 0 0 18" stroke="currentColor" stroke-width="1.4"/><path d="M8 9h2m-1-1v5m6-4 2 4m-3-1h3" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></div></div>
             <div class="px-1 pb-1 pt-3"><p class="text-[9px] font-bold uppercase tracking-[.6px] text-[#478391]">Xarici Dil və Tərcümə Xidməti</p><h3 class="mt-1.5 min-h-[42px] text-[12px] font-bold leading-[1.45] sm:text-[13px]">İngilis / Azərbaycan Tərcüməsi</h3><p class="mt-1 min-h-[28px] text-[10px] leading-4 text-muted">Sənədlər və ümumi mətnlər, səhifə başı</p><div class="mt-2 flex items-center justify-between"><span class="rounded-full bg-[#fff2eb] px-2 py-1 text-[10px] font-semibold text-orange">Yeni</span><span class="text-[14px] font-extrabold">3 <span class="text-[10px]">AZN</span></span></div><a class="whatsapp-order mt-3 flex h-9 w-full items-center justify-center gap-1.5 rounded-[9px] bg-[#e9f7ef] text-[10px] font-bold text-[#21865d] transition hover:bg-[#d8f1e4]" data-product="İngilis / Azərbaycan Dili Mətn Tərcüməsi (Səhifə başı)" href="#" target="_blank" rel="noopener noreferrer"><span aria-hidden="true">↗</span>Sifariş Et (WhatsApp)</a></div>
           </article>
@@ -753,21 +769,54 @@
     </a>
     <div id="toast" class="toast text-[12px] font-semibold" role="status" aria-live="polite"></div>
     <dialog id="service-detail-dialog" class="service-dialog" aria-labelledby="service-detail-title">
-      <div class="p-5 sm:p-7">
+      <div class="p-5 pb-2 sm:p-7 sm:pb-3">
         <div class="flex items-start justify-between gap-4">
           <div>
             <p id="service-detail-category" class="text-[13px] font-bold text-orange-strong"></p>
-            <h2 id="service-detail-title" class="mt-1 font-display text-[22px] font-extrabold leading-tight"></h2>
+            <h2 id="service-detail-title" class="mt-1 font-display text-[22px] font-extrabold leading-tight" tabindex="-1"></h2>
           </div>
           <button type="button" class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#f1f4f7] text-[22px] text-ink hover:bg-[#e4e9ef]" aria-label="Detalları bağla" data-dialog-close>×</button>
         </div>
         <p id="service-detail-price" class="mt-4 text-[18px] font-extrabold"></p>
-        <dl class="mt-5 space-y-4">
-          <div data-detail-section="includes"><dt class="text-[14px] font-bold">Nə daxildir</dt><dd id="service-detail-includes" class="mt-1 text-[14px] leading-6 text-muted"></dd></div>
-          <div data-detail-section="duration"><dt class="text-[14px] font-bold">Təxmini müddət</dt><dd id="service-detail-duration" class="mt-1 text-[14px] leading-6 text-muted"></dd></div>
-          <div data-detail-section="sample" hidden><dt class="text-[14px] font-bold">Nümunə</dt><dd id="service-detail-sample" class="mt-1 text-[14px] leading-6 text-muted"></dd></div>
-        </dl>
-        <a id="service-detail-order" class="whatsapp-order mt-6 flex min-h-12 w-full items-center justify-center rounded-xl bg-orange-strong px-4 text-center text-[14px] font-bold text-white transition hover:bg-orange-strong-dark" href="#" target="_blank" rel="noopener noreferrer">WhatsApp-da sifariş et</a>
+        <section data-detail-section="summary" class="mt-4" hidden>
+          <p id="service-detail-summary" class="text-[14px] leading-6 text-muted"></p>
+        </section>
+        <section data-detail-section="includes" class="mt-5" hidden>
+          <h3 class="text-[14px] font-bold">Nə daxildir</h3>
+          <ul id="service-detail-includes" class="mt-2 space-y-2 text-[14px] leading-5 text-ink"></ul>
+        </section>
+        <section data-detail-section="needs" class="mt-5" hidden>
+          <h3 class="text-[14px] font-bold">Səndən nə lazımdır</h3>
+          <ul id="service-detail-needs" class="mt-2 list-disc space-y-2 pl-5 text-[14px] leading-5 text-muted"></ul>
+        </section>
+        <div class="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <section data-detail-section="duration" class="rounded-xl bg-[#f6f7f9] p-3" hidden>
+            <h3 class="text-[13px] font-bold">Müddət</h3>
+            <p id="service-detail-duration" class="mt-1 text-[13px] leading-5 text-muted"></p>
+          </section>
+          <section data-detail-section="revisions" class="rounded-xl bg-[#f6f7f9] p-3" hidden>
+            <h3 class="text-[13px] font-bold">Düzəliş</h3>
+            <p id="service-detail-revisions" class="mt-1 text-[13px] leading-5 text-muted"></p>
+          </section>
+        </div>
+        <section data-detail-section="sample" class="mt-5" hidden>
+          <h3 class="text-[14px] font-bold">Nümunə</h3>
+          <div id="service-detail-sample" class="mt-1 text-[14px] leading-6 text-muted"></div>
+        </section>
+        <section data-detail-section="note" class="mt-5 rounded-xl bg-[#fff2eb] p-3" hidden>
+          <p id="service-detail-note" class="text-[13px] leading-5 text-[#713b28]"></p>
+        </section>
+        <section class="mt-5">
+          <h3 class="text-[14px] font-bold">Necə sifariş olunur</h3>
+          <ol class="mt-2 grid gap-2 sm:grid-cols-3">
+            <li class="rounded-xl bg-[#f6f7f9] p-3 text-[13px] leading-5 text-ink"><span class="mr-1 font-bold text-orange-strong">1.</span>WhatsApp-da yaz</li>
+            <li class="rounded-xl bg-[#f6f7f9] p-3 text-[13px] leading-5 text-ink"><span class="mr-1 font-bold text-orange-strong">2.</span>Detalları və qiyməti dəqiqləşdiririk</li>
+            <li class="rounded-xl bg-[#f6f7f9] p-3 text-[13px] leading-5 text-ink"><span class="mr-1 font-bold text-orange-strong">3.</span>Hazır olanda sənə təhvil veririk</li>
+          </ol>
+        </section>
+      </div>
+      <div class="service-dialog-action px-5 pb-5 sm:px-7 sm:pb-7">
+        <a id="service-detail-order" class="whatsapp-order flex min-h-12 w-full items-center justify-center rounded-xl bg-orange-strong px-4 text-center text-[14px] font-bold text-white transition hover:bg-orange-strong-dark" href="#" target="_blank" rel="noopener noreferrer">WhatsApp-da sifariş et</a>
       </div>
     </dialog>
 
@@ -820,8 +869,8 @@
         const detailLine = card.querySelector("h3 + p");
         const duration = card.dataset.duration?.trim();
         const format = card.dataset.format?.trim();
-        const hasDuration = Boolean(duration) && !duration.includes("[YER_TUTUCU]");
-        const hasFormat = Boolean(format) && !format.includes("[YER_TUTUCU]");
+        const hasDuration = Boolean(duration);
+        const hasFormat = Boolean(format);
         categoryLabel.hidden = true;
         if (hasDuration) {
           detailLine.textContent = `Müddət: ${duration}`;
@@ -866,16 +915,16 @@
         title.textContent = card.querySelector("h3").textContent.trim();
         const price = document.createElement("p");
         price.className = "mt-2 text-[14px] font-extrabold text-orange-strong";
-        price.textContent = `${card.dataset.price} AZN-dən`;
+        price.textContent = `${card.dataset.price} ${card.dataset.priceFrom === "true" ? "AZN-dən" : "AZN"}`;
         preview.append(title);
         const duration = card.dataset.duration?.trim();
         const format = card.dataset.format?.trim();
         const detailLine = document.createElement("p");
         detailLine.className = "mt-1 text-[13px] text-muted";
-        if (duration && !duration.includes("[YER_TUTUCU]")) {
+        if (duration) {
           detailLine.textContent = `Müddət: ${duration}`;
           preview.append(detailLine);
-        } else if (format && !format.includes("[YER_TUTUCU]")) {
+        } else if (format) {
           detailLine.textContent = `Format: ${format}`;
           preview.append(detailLine);
         }
@@ -990,24 +1039,73 @@
       let detailReturnFocus;
       let previousBodyOverflow;
 
-      function setDetailValue(sectionName, selector, value) {
+      function setDetailText(sectionName, selector, value) {
         const section = detailDialog.querySelector(`[data-detail-section="${sectionName}"]`);
         const content = detailDialog.querySelector(selector);
-        const isAvailable = Boolean(value?.trim()) && !value.includes("[YER_TUTUCU]");
-        content.textContent = isAvailable ? value : "";
+        const text = value?.trim() || "";
+        const isAvailable = Boolean(text);
+        content.textContent = isAvailable ? text : "";
         section.hidden = !isAvailable;
+      }
+
+      function setDetailList(sectionName, selector, value, checked = false) {
+        const section = detailDialog.querySelector(`[data-detail-section="${sectionName}"]`);
+        const list = detailDialog.querySelector(selector);
+        const items = (value || "")
+          .split("|")
+          .map((item) => item.trim())
+          .filter(Boolean);
+        list.replaceChildren(...items.map((item) => {
+          const entry = document.createElement("li");
+          if (checked) {
+            entry.className = "flex items-start gap-2";
+            const icon = document.createElement("span");
+            icon.className = "shrink-0 font-bold text-[#2b9871]";
+            icon.setAttribute("aria-hidden", "true");
+            icon.textContent = "✓";
+            entry.append(icon, document.createTextNode(item));
+          } else {
+            entry.textContent = item;
+          }
+          return entry;
+        }));
+        section.hidden = items.length === 0;
+      }
+
+      function setDetailSample(value) {
+        const section = detailDialog.querySelector('[data-detail-section="sample"]');
+        const content = detailDialog.querySelector("#service-detail-sample");
+        const sample = value?.trim() || "";
+        content.replaceChildren();
+        if (/^https?:\/\//i.test(sample)) {
+          const link = document.createElement("a");
+          link.href = sample;
+          link.target = "_blank";
+          link.rel = "noopener noreferrer";
+          link.className = "font-semibold text-orange-strong underline underline-offset-2 focus-visible:outline-offset-2";
+          link.textContent = sample;
+          content.append(link);
+        } else {
+          content.textContent = sample;
+        }
+        section.hidden = !sample;
       }
 
       function openServiceDetail(card, trigger) {
         const product = card.dataset.product;
-        const price = `${card.dataset.price} AZN`;
+        const priceLabel = card.dataset.priceFrom === "true" ? "AZN-dən" : "AZN";
+        const price = `${card.dataset.price} ${priceLabel}${card.dataset.unit ? ` / ${card.dataset.unit}` : ""}`;
         detailReturnFocus = trigger;
-        document.querySelector("#service-detail-title").textContent = product;
+        document.querySelector("#service-detail-title").textContent = card.dataset.titleFull?.trim() || card.dataset.name || product;
         document.querySelector("#service-detail-category").textContent = card.dataset.category;
         document.querySelector("#service-detail-price").textContent = price;
-        setDetailValue("includes", "#service-detail-includes", card.dataset.includes || "");
-        setDetailValue("duration", "#service-detail-duration", card.dataset.duration || "");
-        setDetailValue("sample", "#service-detail-sample", card.dataset.sample || "");
+        setDetailText("summary", "#service-detail-summary", card.dataset.summary || "");
+        setDetailList("includes", "#service-detail-includes", card.dataset.includes || "", true);
+        setDetailList("needs", "#service-detail-needs", card.dataset.needs || "");
+        setDetailText("duration", "#service-detail-duration", card.dataset.duration || "");
+        setDetailText("revisions", "#service-detail-revisions", card.dataset.revisions || "");
+        setDetailSample(card.dataset.sample || "");
+        setDetailText("note", "#service-detail-note", card.dataset.note || "");
         detailOrderLink.dataset.product = product;
         detailOrderLink.dataset.category = card.dataset.category;
         detailOrderLink.href = getOrderUrl(product);
@@ -1016,7 +1114,7 @@
         floatingWhatsapp.hidden = true;
         detailDialog.showModal();
         track("service_detail_open", { service: product });
-        detailDialog.querySelector("[data-dialog-close]").focus();
+        document.querySelector("#service-detail-title").focus();
       }
 
       detailDialog.querySelector("[data-dialog-close]").addEventListener("click", () => detailDialog.close());
@@ -1033,9 +1131,13 @@
         const focusable = [...detailDialog.querySelectorAll('a[href], button:not(:disabled)')];
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
-        if (event.shiftKey && document.activeElement === first) {
+        const title = document.querySelector("#service-detail-title");
+        if (event.shiftKey && (document.activeElement === first || document.activeElement === title)) {
           event.preventDefault();
           last.focus();
+        } else if (!event.shiftKey && document.activeElement === title) {
+          event.preventDefault();
+          first.focus();
         } else if (!event.shiftKey && document.activeElement === last) {
           event.preventDefault();
           first.focus();
