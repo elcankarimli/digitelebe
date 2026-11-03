@@ -17,7 +17,12 @@
     <meta name="twitter:image" content="./og-image.png" />
     <meta name="theme-color" content="#fffaf7" />
     <title>Xəbərlər — DigiTələbə</title>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=4" />
+    <style>
+      @view-transition {
+        navigation: auto;
+      }
+    </style>
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,7 +39,7 @@
   </head>
   <body class="min-w-[320px] bg-canvas font-sans text-ink">
     <header class="header-shadow bg-white">
-      <div class="container flex min-h-[76px] items-center justify-between gap-4 py-3">
+      <div class="container mx-auto flex min-h-[76px] items-center justify-between gap-4 py-3">
         <a href="./index.html" class="flex shrink-0 items-center gap-2.5" aria-label="DigiTələbə ana səhifə">
           <span class="brand-mark" aria-hidden="true">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
@@ -50,7 +55,7 @@
         <a href="./index.html#products" class="inline-flex min-h-11 items-center justify-center rounded-xl border border-[#d6a18e] px-4 text-[13px] font-bold text-ink transition hover:border-orange-strong hover:text-orange-strong">Xidmətlərə bax</a>
       </div>
       <nav class="border-t border-[#f1f2f5]" aria-label="Əsas menyu">
-        <div class="container flex flex-wrap items-center justify-center gap-x-7 gap-y-2 py-3 text-[12px]">
+        <div class="container mx-auto flex flex-wrap items-center justify-center gap-x-7 gap-y-2 py-3 text-[12px]">
           <a class="font-medium text-muted transition hover:text-ink" href="./index.html">Ana səhifə</a>
           <a class="font-medium text-muted transition hover:text-ink" href="./index.html#products">Xidmətlər</a>
           <a class="font-bold text-orange" href="./news.html" aria-current="page">Xəbərlər</a>
@@ -60,12 +65,12 @@
       </nav>
     </header>
 
-    <main class="container py-6 sm:py-8">
+    <main class="container mx-auto py-6 sm:py-8">
       <section aria-labelledby="news-title">
-        <div class="mb-4">
+        <div class="mb-4 text-center">
           <p class="mb-1 text-[10px] font-extrabold uppercase tracking-[1.5px] text-orange">Gündəm</p>
           <h1 id="news-title" class="font-display text-[28px] font-extrabold tracking-[-.8px] sm:text-[34px]">Tələbə xəbərləri</h1>
-          <p class="mt-1.5 max-w-[650px] text-[14px] leading-5 text-muted">Təhsil yenilikləri, tələbə proqramları və vacib məlumatlar bir səhifədə.</p>
+          <p class="mx-auto mt-1.5 max-w-[650px] text-[14px] leading-5 text-muted">Təhsil yenilikləri, tələbə proqramları və vacib məlumatlar bir səhifədə.</p>
         </div>
 
         <div class="grid gap-3 sm:grid-cols-2">
@@ -183,7 +188,7 @@
     </main>
 
     <footer class="border-t border-[#e9edf2] bg-white">
-      <div class="container flex flex-wrap items-center justify-between gap-3 py-6">
+      <div class="container mx-auto flex flex-wrap items-center justify-between gap-3 py-6">
         <a href="./index.html" class="font-display text-[14px] font-extrabold">Digi<span class="text-orange">Tələbə</span></a>
         <a href="./index.html" class="text-[12px] font-semibold text-muted transition hover:text-orange-strong">Ana səhifəyə qayıt</a>
         <span class="text-[11px] text-muted">© 2026 DigiTələbə</span>
