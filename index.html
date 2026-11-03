@@ -521,6 +521,132 @@
         </div>
       </section>
 
+      <section id="student-hub" class="container pb-8" aria-labelledby="student-hub-title">
+        <div class="mb-4">
+          <h2 id="student-hub-title" class="font-display text-[20px] font-extrabold tracking-[-.5px] sm:text-[22px]">Tələbə üçün faydalı bölmələr</h2>
+          <p class="mt-1 text-[13px] leading-5 text-muted">Təhsil resursları, yeniliklər və imkanlar bir yerdə. Son tarix və şərtləri rəsmi mənbədən yoxla.</p>
+        </div>
+
+        <div class="mb-4 overflow-x-auto pb-2" role="tablist" aria-label="Tələbə bölmələri">
+          <div class="flex w-max min-w-full gap-2">
+            <button id="student-tab-education" class="min-h-11 shrink-0 rounded-xl border border-[#dbeafe] bg-[#eff6ff] px-4 text-[13px] font-bold text-[#1d4ed8] transition hover:-translate-y-0.5" type="button" role="tab" aria-selected="true" aria-controls="student-panel-education" tabindex="0" data-student-tab="education">📚 Təhsil</button>
+            <button id="student-tab-news" class="min-h-11 shrink-0 rounded-xl border border-[#e2e8f0] bg-white px-4 text-[13px] font-bold text-[#475569] transition hover:-translate-y-0.5" type="button" role="tab" aria-selected="false" aria-controls="student-panel-news" tabindex="-1" data-student-tab="news">📰 Xəbərlər</button>
+            <button id="student-tab-notices" class="min-h-11 shrink-0 rounded-xl border border-[#dcfce7] bg-white px-4 text-[13px] font-bold text-[#15803d] transition hover:-translate-y-0.5" type="button" role="tab" aria-selected="false" aria-controls="student-panel-notices" tabindex="-1" data-student-tab="notices">📢 Elanlar</button>
+            <button id="student-tab-global" class="min-h-11 shrink-0 rounded-xl border border-[#ede9fe] bg-white px-4 text-[13px] font-bold text-[#7e22ce] transition hover:-translate-y-0.5" type="button" role="tab" aria-selected="false" aria-controls="student-panel-global" tabindex="-1" data-student-tab="global">🌍 Beynəlxalq imkanlar</button>
+            <button id="student-tab-offers" class="min-h-11 shrink-0 rounded-xl border border-[#ffedd5] bg-white px-4 text-[13px] font-bold text-[#c2410c] transition hover:-translate-y-0.5" type="button" role="tab" aria-selected="false" aria-controls="student-panel-offers" tabindex="-1" data-student-tab="offers">🎯 Reklamlar &amp; təkliflər</button>
+          </div>
+        </div>
+
+        <div id="student-panel-education" class="grid gap-3 sm:grid-cols-2" role="tabpanel" aria-labelledby="student-tab-education" tabindex="0" data-student-panel="education">
+          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="rounded-full bg-[#eff6ff] px-2.5 py-1 text-[11px] font-bold text-[#1d4ed8]">Təhsil aləti</span>
+              <span class="text-[11px] font-semibold text-muted">Universitet qaydalarına görə</span>
+            </div>
+            <h3 class="mt-3 text-[15px] font-extrabold">GPA və kəsir limitini planla</h3>
+            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Qiymətlərini və fənn kreditlərini izləmək üçün plan cədvəli qur; hesablamanı universitetinin rəsmi qaydaları ilə tutuşdur.</p>
+            <a href="#products" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#eff6ff] px-3 text-[13px] font-bold text-[#1d4ed8] transition hover:bg-[#dbeafe]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
+          </article>
+          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="rounded-full bg-[#eff6ff] px-2.5 py-1 text-[11px] font-bold text-[#1d4ed8]">Şablon və konspekt</span>
+              <span class="text-[11px] font-semibold text-muted">Fənnə görə dəyişir</span>
+            </div>
+            <h3 class="mt-3 text-[15px] font-extrabold">Kurs işi, diplom və mühazirə qeydləri</h3>
+            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">İşini strukturlaşdırmaq üçün şablonlardan, imtahana hazırlaşmaq üçün qısa vəsaitlərdən yararlan.</p>
+            <a href="#products" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#eff6ff] px-3 text-[13px] font-bold text-[#1d4ed8] transition hover:bg-[#dbeafe]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
+          </article>
+        </div>
+
+        <div id="student-panel-news" class="hidden grid gap-3 sm:grid-cols-2" role="tabpanel" aria-labelledby="student-tab-news" tabindex="0" data-student-panel="news">
+          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="rounded-full bg-[#f1f5f9] px-2.5 py-1 text-[11px] font-bold text-[#475569]">Təhsil krediti</span>
+              <span class="text-[11px] font-semibold text-muted">Müraciət dövrünə görə</span>
+            </div>
+            <h3 class="mt-3 text-[15px] font-extrabold">TTKF təhsil kreditləri</h3>
+            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Təhsil tələbə kreditinin müraciət qaydaları, uyğunluq meyarları və cari elanları ilə tanış ol.</p>
+            <a href="https://ttkf.edu.az/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#f1f5f9] px-3 text-[13px] font-bold text-[#475569] transition hover:bg-[#e2e8f0]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
+          </article>
+          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="rounded-full bg-[#f1f5f9] px-2.5 py-1 text-[11px] font-bold text-[#475569]">Rəsmi yeniliklər</span>
+              <span class="text-[11px] font-semibold text-muted">Yeni elanlar üçün yoxla</span>
+            </div>
+            <h3 class="mt-3 text-[15px] font-extrabold">Akademik xəbərlər və elanlar</h3>
+            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Təhsil sahəsindəki yenilikləri və akademik məlumatları Elm və Təhsil Nazirliyinin rəsmi səhifəsindən izlə.</p>
+            <a href="https://edu.gov.az/az" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#f1f5f9] px-3 text-[13px] font-bold text-[#475569] transition hover:bg-[#e2e8f0]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
+          </article>
+        </div>
+
+        <div id="student-panel-notices" class="hidden grid gap-3 sm:grid-cols-2" role="tabpanel" aria-labelledby="student-tab-notices" tabindex="0" data-student-panel="notices">
+          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="rounded-full bg-[#dcfce7] px-2.5 py-1 text-[11px] font-bold text-[#15803d]">Könüllülük</span>
+              <span class="text-[11px] font-semibold text-muted">Elan əsasında</span>
+            </div>
+            <h3 class="mt-3 text-[15px] font-extrabold">ASAN könüllülük proqramı</h3>
+            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Proqramlar, qəbul şərtləri və müraciət tarixləri barədə məlumatı rəsmi ASAN könüllüləri səhifəsində yoxla.</p>
+            <a href="https://asan.gov.az/az/volunteer" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#dcfce7] px-3 text-[13px] font-bold text-[#15803d] transition hover:bg-[#bbf7d0]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
+          </article>
+          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="rounded-full bg-[#dcfce7] px-2.5 py-1 text-[11px] font-bold text-[#15803d]">Təcrübə və komanda</span>
+              <span class="text-[11px] font-semibold text-muted">Müddət elana görə</span>
+            </div>
+            <h3 class="mt-3 text-[15px] font-extrabold">Təcrübə, vakansiya və hakatonlar</h3>
+            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Tələbələr üçün təcrübə imkanlarını, lokal vakansiyaları və hakatonlarda komanda yoldaşı axtarışını izlə.</p>
+            <a href="https://www.linkedin.com/jobs/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#dcfce7] px-3 text-[13px] font-bold text-[#15803d] transition hover:bg-[#bbf7d0]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
+          </article>
+        </div>
+
+        <div id="student-panel-global" class="hidden grid gap-3 sm:grid-cols-2" role="tabpanel" aria-labelledby="student-tab-global" tabindex="0" data-student-panel="global">
+          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="rounded-full bg-[#f3e8ff] px-2.5 py-1 text-[11px] font-bold text-[#7e22ce]">Mübadilə proqramı</span>
+              <span class="text-[11px] font-semibold text-muted">Çağırış dövrünə görə</span>
+            </div>
+            <h3 class="mt-3 text-[15px] font-extrabold">Erasmus+ imkanları</h3>
+            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Tələbə mübadiləsi, təhsil və gənclər proqramları barədə rəsmi Erasmus+ məlumatlarını araşdır.</p>
+            <a href="https://erasmus-plus.ec.europa.eu/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#f3e8ff] px-3 text-[13px] font-bold text-[#7e22ce] transition hover:bg-[#e9d5ff]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
+          </article>
+          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="rounded-full bg-[#f3e8ff] px-2.5 py-1 text-[11px] font-bold text-[#7e22ce]">Könüllülük və təqaüd</span>
+              <span class="text-[11px] font-semibold text-muted">Proqram dövrünə görə</span>
+            </div>
+            <h3 class="mt-3 text-[15px] font-extrabold">ESC və xaricdə təhsil qrantları</h3>
+            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Avropa Həmrəylik Korpusu layihələrini, xaricdə təhsil təqaüdlərini və qrantları rəsmi mənbələrdən yoxla.</p>
+            <a href="https://youth.europa.eu/solidarity_en" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#f3e8ff] px-3 text-[13px] font-bold text-[#7e22ce] transition hover:bg-[#e9d5ff]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
+          </article>
+        </div>
+
+        <div id="student-panel-offers" class="hidden grid gap-3 sm:grid-cols-2" role="tabpanel" aria-labelledby="student-tab-offers" tabindex="0" data-student-panel="offers">
+          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="rounded-full bg-[#fff7ed] px-2.5 py-1 text-[11px] font-bold text-[#c2410c]">Tələbə endirimi</span>
+              <span class="text-[11px] font-semibold text-muted">Uyğunluq şərtləri var</span>
+            </div>
+            <h3 class="mt-3 text-[15px] font-extrabold">GitHub, Notion və Canva</h3>
+            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Tələbələr üçün rəqəmsal alətlərin təhsil planlarını və endirim uyğunluğunu provayderlərin saytında yoxla.</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <a href="https://education.github.com/pack" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 flex-1 items-center justify-center rounded-xl bg-[#fff7ed] px-3 text-[12px] font-bold text-[#c2410c] transition hover:bg-[#ffedd5]">GitHub ➔</a>
+              <a href="https://www.notion.so/product/notion-for-education" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 flex-1 items-center justify-center rounded-xl bg-[#fff7ed] px-3 text-[12px] font-bold text-[#c2410c] transition hover:bg-[#ffedd5]">Notion ➔</a>
+              <a href="https://www.canva.com/education/" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 flex-1 items-center justify-center rounded-xl bg-[#fff7ed] px-3 text-[12px] font-bold text-[#c2410c] transition hover:bg-[#ffedd5]">Canva ➔</a>
+            </div>
+          </article>
+          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
+            <div class="flex flex-wrap items-center justify-between gap-2">
+              <span class="rounded-full bg-[#fff7ed] px-2.5 py-1 text-[11px] font-bold text-[#c2410c]">Kurs güzəşti</span>
+              <span class="text-[11px] font-semibold text-muted">Təkliflər dəyişə bilər</span>
+            </div>
+            <h3 class="mt-3 text-[15px] font-extrabold">Dil kursları və tələbə təklifləri</h3>
+            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Dil kurslarına və tələbələr üçün xüsusi təkliflərə qoşulmazdan əvvəl qiyməti, müddəti və şərtləri təşkilatçı ilə dəqiqləşdir.</p>
+            <a href="#contact" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#fff7ed] px-3 text-[13px] font-bold text-[#c2410c] transition hover:bg-[#ffedd5]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
+          </article>
+        </div>
+      </section>
+
       <section class="container pb-7" aria-labelledby="categories-title">
         <div class="mb-3 flex items-end justify-between gap-3">
           <div>
@@ -821,6 +947,45 @@
     </dialog>
 
     <script>
+      const studentTabs = [...document.querySelectorAll("[data-student-tab]")];
+      const studentPanels = [...document.querySelectorAll("[data-student-panel]")];
+
+      function activateStudentTab(tab, moveFocus = false) {
+        const selectedKey = tab.dataset.studentTab;
+        studentTabs.forEach((item) => {
+          const isSelected = item === tab;
+          item.setAttribute("aria-selected", String(isSelected));
+          item.tabIndex = isSelected ? 0 : -1;
+          item.classList.toggle("bg-white", !isSelected);
+          item.classList.toggle("bg-[#eff6ff]", isSelected && selectedKey === "education");
+          item.classList.toggle("bg-[#f1f5f9]", isSelected && selectedKey === "news");
+          item.classList.toggle("bg-[#dcfce7]", isSelected && selectedKey === "notices");
+          item.classList.toggle("bg-[#f3e8ff]", isSelected && selectedKey === "global");
+          item.classList.toggle("bg-[#fff7ed]", isSelected && selectedKey === "offers");
+          item.classList.toggle("shadow-[0_4px_12px_rgba(23,36,58,.08)]", isSelected);
+        });
+        studentPanels.forEach((panel) => {
+          const isActive = panel.dataset.studentPanel === selectedKey;
+          panel.classList.toggle("hidden", !isActive);
+          panel.hidden = !isActive;
+        });
+        if (moveFocus) tab.focus();
+      }
+
+      studentTabs.forEach((tab, index) => {
+        tab.addEventListener("click", () => activateStudentTab(tab));
+        tab.addEventListener("keydown", (event) => {
+          let nextIndex = index;
+          if (event.key === "ArrowRight") nextIndex = (index + 1) % studentTabs.length;
+          else if (event.key === "ArrowLeft") nextIndex = (index - 1 + studentTabs.length) % studentTabs.length;
+          else if (event.key === "Home") nextIndex = 0;
+          else if (event.key === "End") nextIndex = studentTabs.length - 1;
+          else return;
+          event.preventDefault();
+          activateStudentTab(studentTabs[nextIndex], true);
+        });
+      });
+
       const productCards = [...document.querySelectorAll(".product-card")];
       const categoryControls = [...document.querySelectorAll(".filter-chip")];
       const noResults = document.querySelector("#no-results");
