@@ -126,46 +126,76 @@
         isolation: isolate;
         overflow: hidden;
         background:
-          radial-gradient(ellipse at 86% 16%, rgb(255 255 255 / 54%), transparent 29%),
-          linear-gradient(120deg, #fff0e9 0%, #fff8f4 52%, #ffebe2 100%);
+          radial-gradient(ellipse at 82% 18%, rgb(255 255 255 / 92%), transparent 27%),
+          linear-gradient(120deg, #fff5ef 0%, #fffaf7 49%, #f6f1ff 100%);
       }
 
       .hero-banner::before,
       .hero-banner::after {
         position: absolute;
         z-index: -1;
-        border: 1px solid rgb(244 119 80 / 14%);
         border-radius: 999px;
         content: "";
       }
 
       .hero-banner::before {
-        top: -170px;
-        right: -85px;
-        width: 420px;
-        height: 420px;
+        top: -190px;
+        right: -100px;
+        width: 470px;
+        height: 470px;
+        background: rgb(244 119 80 / 8%);
       }
 
       .hero-banner::after {
-        right: -30px;
-        bottom: -250px;
-        width: 460px;
-        height: 460px;
+        right: 24%;
+        bottom: -260px;
+        width: 430px;
+        height: 430px;
+        background: rgb(139 92 246 / 7%);
       }
 
       #hero-service-preview {
-        min-height: 250px;
+        min-height: 0;
       }
 
-      .filter-chip {
-        transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+      .hero-highlight {
+        position: relative;
+        z-index: 0;
+        white-space: nowrap;
       }
 
-      .filter-chip:hover,
-      .filter-chip.active {
-        border-color: #ffe0d4;
-        background: #fff3ee;
-        color: #a63e20;
+      .hero-highlight svg {
+        position: absolute;
+        z-index: -1;
+        top: -18%;
+        left: -5%;
+        width: 110%;
+        height: 138%;
+        overflow: visible;
+        pointer-events: none;
+      }
+
+      .hero-highlight path {
+        fill: none;
+        stroke: #f47750;
+        stroke-linecap: round;
+        stroke-width: 3;
+        stroke-dasharray: 440;
+        stroke-dashoffset: 440;
+        animation: hero-highlight-draw 900ms ease-out 350ms forwards;
+      }
+
+      @keyframes hero-highlight-draw {
+        to {
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .hero-highlight path {
+          animation: none;
+          stroke-dashoffset: 0;
+        }
       }
 
       .product-card {
@@ -459,6 +489,8 @@
         <div class="container hidden h-[46px] items-center gap-8 lg:flex">
           <a class="text-[12px] font-bold text-orange" href="#">Ana Səhifə</a>
           <a class="text-[12px] font-medium text-muted transition hover:text-ink" href="#products">Xidmətlər</a>
+          <a class="text-[12px] font-medium text-muted transition hover:text-ink" href="./news.html">Xəbərlər</a>
+          <a class="text-[12px] font-medium text-muted transition hover:text-ink" href="#announcements">Elanlar</a>
           <a class="text-[12px] font-medium text-muted transition hover:text-ink" href="#how-it-works">Necə İşləyir?</a>
           <a href="#faq" class="text-[12px] font-medium text-muted transition hover:text-ink">Suallar</a>
         </div>
@@ -471,6 +503,8 @@
         <div id="mobile-menu" class="hidden border-t border-[#f1f2f5] bg-white px-4 pb-4 pt-2 lg:hidden">
           <a class="block rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-[#fff5f0]" href="#">Ana Səhifə</a>
           <a class="block rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-[#fff5f0]" href="#products">Xidmətlər</a>
+          <a class="block rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-[#fff5f0]" href="./news.html">Xəbərlər</a>
+          <a class="block rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-[#fff5f0]" href="#announcements">Elanlar</a>
           <a class="block rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-[#fff5f0]" href="#how-it-works">Necə İşləyir?</a>
           <a href="#faq" class="block rounded-lg px-3 py-2.5 text-sm font-medium hover:bg-[#fff5f0]">Suallar</a>
           <a data-track-seller="mobile_navigation" href="#seller" class="block rounded-lg px-3 py-2.5 text-sm font-semibold text-orange hover:bg-[#fff5f0]">Xidmət göstər</a>
@@ -480,20 +514,26 @@
 
     <main>
       <section class="container min-w-0 py-7 md:py-9">
-        <div class="hero-banner flex min-h-[420px] min-w-0 flex-col justify-between rounded-[22px] p-6 sm:p-9 lg:flex-row lg:items-center lg:p-11">
-          <div class="relative z-10 max-w-[540px]">
-            <h1 class="max-w-[600px] font-display text-[34px] font-extrabold leading-[1.14] tracking-[-1.5px] text-ink sm:text-[44px] lg:text-[48px]">
-              Tələbə bacarığı, <span class="text-orange">tələbə qiyməti.</span>
+        <div class="hero-banner flex min-w-0 flex-col items-center gap-8 rounded-[22px] p-6 sm:p-9 lg:grid lg:min-h-[520px] lg:grid-cols-[1fr_0.92fr] lg:gap-8 lg:p-11">
+          <div class="relative z-10 mx-auto w-full max-w-[560px] text-center lg:mx-0 lg:text-left">
+            <span class="inline-flex min-h-8 items-center gap-2 rounded-full border border-[#f5d8ca] bg-white/80 px-3 text-[12px] font-bold text-[#a34325] shadow-sm">
+              <span class="h-2 w-2 rounded-full bg-[#f47750]" aria-hidden="true"></span>
+              Tələbə həyatı üçün bir platforma
+            </span>
+            <h1 class="mt-5 font-display text-[36px] font-extrabold leading-[1.12] tracking-[-1.6px] text-ink sm:text-[48px] lg:text-[52px]">
+              Tələbə <span class="hero-highlight text-orange-strong">potensialını
+                <svg viewBox="0 0 270 82" preserveAspectRatio="none" aria-hidden="true"><path d="M17 43C19 19 65 9 132 10c66 1 116 11 121 32 6 24-49 32-121 30C61 70 12 64 17 43Z"></path></svg>
+              </span><br class="hidden sm:block" /> kəşf et!
             </h1>
-            <p class="mt-4 max-w-[560px] text-[14px] leading-6 text-[#68758a] sm:text-[16px]">
-              CV, dizayn, tərcümə, IT dərsləri və daha çoxu. Sifarişi WhatsApp-da dəqiqləşdiririk, hazır olanda sənə təhvil veririk.
+            <p class="mx-auto mt-4 max-w-[470px] text-[14px] leading-6 text-[#68758a] sm:text-[16px] lg:mx-0">
+              Tələbələr üçün xidmət bazarı, akademik alətlər, təcrübə və endirim imkanları bir arada.
             </p>
-            <div class="mt-6 flex flex-wrap items-center gap-4">
+            <div class="mt-6 flex flex-wrap justify-center gap-3 lg:justify-start">
               <a href="#products" class="inline-flex min-h-11 items-center justify-center gap-2 rounded-xl bg-orange-strong px-5 text-[14px] font-bold text-white shadow-[0_7px_18px_rgba(194,65,12,.2)] transition hover:-translate-y-0.5 hover:bg-orange-strong-dark">
-                Xidmətlərə Bax <span aria-hidden="true">→</span>
+                Xidmətlərə Bax <span aria-hidden="true">➔</span>
               </a>
             </div>
-            <div class="mt-5 flex items-center gap-3">
+            <div class="mt-6 flex items-center justify-center gap-3 lg:justify-start">
               <span class="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-[#e8d5ca] font-display text-[14px] font-extrabold text-[#654333]" aria-hidden="true">EK</span>
               <div class="text-[13px] leading-5">
                 <a href="https://www.linkedin.com/in/kerimlielcan" target="_blank" rel="noopener noreferrer" aria-label="Elcan Kərimli LinkedIn profili" class="inline-flex min-h-11 items-center font-bold text-ink underline underline-offset-2">Elcan Kərimli, təsisçi</a>
@@ -503,7 +543,31 @@
             <!-- TƏSİSÇİ_FOTOSU_YER_TUTUCU: foto əlavə ediləndə EK avatarı foto ilə əvəz et. -->
             <span id="response-time-copy" hidden>[CAVAB_MÜDDƏTİ_YER_TUTUCU]</span>
           </div>
-          <div id="hero-service-preview" class="mt-8 grid w-full gap-3 sm:grid-cols-3 lg:mt-0 lg:max-w-[430px] lg:grid-cols-1" aria-label="Xidmət nümunələri">
+          <div class="relative mx-auto w-full max-w-[460px] lg:mr-0">
+            <div class="relative mx-auto aspect-square w-full max-w-[410px]">
+              <div class="absolute left-[8%] top-[7%] h-[78%] w-[84%] rotate-[-7deg] rounded-[46%_54%_48%_52%/43%_42%_58%_57%] bg-[#e7ddff]" aria-hidden="true"></div>
+              <div class="absolute left-[11%] top-[10%] h-[76%] w-[82%] rotate-[5deg] rounded-[54%_46%_58%_42%/44%_55%_45%_56%] bg-[#ffe1d2]" aria-hidden="true"></div>
+              <span class="absolute left-[2%] top-[20%] z-10 grid h-11 w-11 rotate-[-12deg] place-items-center rounded-2xl bg-white text-[25px] font-extrabold text-[#8b5cf6] shadow-[0_8px_24px_rgba(23,36,58,.12)]" aria-hidden="true">#</span>
+              <span class="absolute right-[5%] top-[13%] z-10 grid h-10 w-10 rotate-[10deg] place-items-center rounded-2xl bg-[#fff7ed] text-[27px] font-bold leading-none text-[#f47750] shadow-[0_8px_24px_rgba(23,36,58,.1)]" aria-hidden="true">*</span>
+              <span class="absolute right-[1%] top-[54%] z-10 h-4 w-4 rotate-12 rounded-[5px] bg-[#8b5cf6] shadow-[0_5px_12px_rgba(139,92,246,.3)]" aria-hidden="true"></span>
+              <span class="absolute bottom-[23%] left-[5%] z-10 h-3 w-3 rotate-45 rounded-[3px] bg-[#f47750]" aria-hidden="true"></span>
+              <div class="absolute left-[13%] top-[3%] h-[86%] w-[74%] overflow-hidden rounded-[48%_52%_42%_58%/35%_37%_63%_65%] border-[7px] border-white/80 shadow-[0_22px_55px_rgba(76,51,89,.18)]">
+                <img
+                  class="h-full w-full object-cover object-[center_30%]"
+                  src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&amp;fit=crop&amp;w=900&amp;q=85"
+                  alt="Qovluq tutan tələbə"
+                  width="900"
+                  height="1350"
+                  fetchpriority="high"
+                  decoding="async"
+                />
+              </div>
+              <div class="absolute bottom-[8%] right-0 z-10 rounded-2xl border border-white/80 bg-white/90 px-3 py-2 shadow-[0_10px_28px_rgba(23,36,58,.12)] backdrop-blur">
+                <span class="block text-[11px] font-semibold text-muted">İdeyadan imkana</span>
+                <span class="mt-0.5 block text-[13px] font-extrabold text-ink">İrəli get! <span class="text-orange-strong" aria-hidden="true">↗</span></span>
+              </div>
+            </div>
+            <div id="hero-service-preview" class="mt-5 grid w-full gap-2 sm:grid-cols-3" aria-label="Xidmət nümunələri"></div>
           </div>
         </div>
       </section>
@@ -521,128 +585,30 @@
         </div>
       </section>
 
-      <section id="student-hub" class="container pb-8" aria-labelledby="student-hub-title">
+      <section id="announcements" class="container scroll-mt-6 pb-8" aria-labelledby="announcements-title">
         <div class="mb-4">
-          <h2 id="student-hub-title" class="font-display text-[20px] font-extrabold tracking-[-.5px] sm:text-[22px]">Tələbə üçün faydalı bölmələr</h2>
-          <p class="mt-1 text-[13px] leading-5 text-muted">Təhsil resursları, yeniliklər və imkanlar bir yerdə. Son tarix və şərtləri rəsmi mənbədən yoxla.</p>
+          <p class="mb-1 text-[10px] font-extrabold uppercase tracking-[1.5px] text-[#328466]">Fürsətlər</p>
+          <h2 id="announcements-title" class="font-display text-[22px] font-extrabold tracking-[-.6px] sm:text-[25px]">Elanlar</h2>
+          <p class="mt-1 text-[13px] text-muted">Könüllülük, təcrübə və tələbə imkanları</p>
         </div>
-
-        <div class="mb-4 overflow-x-auto pb-2" role="tablist" aria-label="Tələbə bölmələri">
-          <div class="flex w-max min-w-full gap-2">
-            <button id="student-tab-education" class="min-h-11 shrink-0 rounded-xl border border-[#dbeafe] bg-[#eff6ff] px-4 text-[13px] font-bold text-[#1d4ed8] transition hover:-translate-y-0.5" type="button" role="tab" aria-selected="true" aria-controls="student-panel-education" tabindex="0" data-student-tab="education">📚 Təhsil</button>
-            <button id="student-tab-news" class="min-h-11 shrink-0 rounded-xl border border-[#e2e8f0] bg-white px-4 text-[13px] font-bold text-[#475569] transition hover:-translate-y-0.5" type="button" role="tab" aria-selected="false" aria-controls="student-panel-news" tabindex="-1" data-student-tab="news">📰 Xəbərlər</button>
-            <button id="student-tab-notices" class="min-h-11 shrink-0 rounded-xl border border-[#dcfce7] bg-white px-4 text-[13px] font-bold text-[#15803d] transition hover:-translate-y-0.5" type="button" role="tab" aria-selected="false" aria-controls="student-panel-notices" tabindex="-1" data-student-tab="notices">📢 Elanlar</button>
-            <button id="student-tab-global" class="min-h-11 shrink-0 rounded-xl border border-[#ede9fe] bg-white px-4 text-[13px] font-bold text-[#7e22ce] transition hover:-translate-y-0.5" type="button" role="tab" aria-selected="false" aria-controls="student-panel-global" tabindex="-1" data-student-tab="global">🌍 Beynəlxalq imkanlar</button>
-            <button id="student-tab-offers" class="min-h-11 shrink-0 rounded-xl border border-[#ffedd5] bg-white px-4 text-[13px] font-bold text-[#c2410c] transition hover:-translate-y-0.5" type="button" role="tab" aria-selected="false" aria-controls="student-panel-offers" tabindex="-1" data-student-tab="offers">🎯 Reklamlar &amp; təkliflər</button>
-          </div>
-        </div>
-
-        <div id="student-panel-education" class="grid gap-3 sm:grid-cols-2" role="tabpanel" aria-labelledby="student-tab-education" tabindex="0" data-student-panel="education">
-          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="rounded-full bg-[#eff6ff] px-2.5 py-1 text-[11px] font-bold text-[#1d4ed8]">Təhsil aləti</span>
-              <span class="text-[11px] font-semibold text-muted">Universitet qaydalarına görə</span>
-            </div>
-            <h3 class="mt-3 text-[15px] font-extrabold">GPA və kəsir limitini planla</h3>
-            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Qiymətlərini və fənn kreditlərini izləmək üçün plan cədvəli qur; hesablamanı universitetinin rəsmi qaydaları ilə tutuşdur.</p>
-            <a href="#products" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#eff6ff] px-3 text-[13px] font-bold text-[#1d4ed8] transition hover:bg-[#dbeafe]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
-          </article>
-          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="rounded-full bg-[#eff6ff] px-2.5 py-1 text-[11px] font-bold text-[#1d4ed8]">Şablon və konspekt</span>
-              <span class="text-[11px] font-semibold text-muted">Fənnə görə dəyişir</span>
-            </div>
-            <h3 class="mt-3 text-[15px] font-extrabold">Kurs işi, diplom və mühazirə qeydləri</h3>
-            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">İşini strukturlaşdırmaq üçün şablonlardan, imtahana hazırlaşmaq üçün qısa vəsaitlərdən yararlan.</p>
-            <a href="#products" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#eff6ff] px-3 text-[13px] font-bold text-[#1d4ed8] transition hover:bg-[#dbeafe]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
-          </article>
-        </div>
-
-        <div id="student-panel-news" class="hidden grid gap-3 sm:grid-cols-2" role="tabpanel" aria-labelledby="student-tab-news" tabindex="0" data-student-panel="news">
-          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="rounded-full bg-[#f1f5f9] px-2.5 py-1 text-[11px] font-bold text-[#475569]">Təhsil krediti</span>
-              <span class="text-[11px] font-semibold text-muted">Müraciət dövrünə görə</span>
-            </div>
-            <h3 class="mt-3 text-[15px] font-extrabold">TTKF təhsil kreditləri</h3>
-            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Təhsil tələbə kreditinin müraciət qaydaları, uyğunluq meyarları və cari elanları ilə tanış ol.</p>
-            <a href="https://ttkf.edu.az/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#f1f5f9] px-3 text-[13px] font-bold text-[#475569] transition hover:bg-[#e2e8f0]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
-          </article>
-          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="rounded-full bg-[#f1f5f9] px-2.5 py-1 text-[11px] font-bold text-[#475569]">Rəsmi yeniliklər</span>
-              <span class="text-[11px] font-semibold text-muted">Yeni elanlar üçün yoxla</span>
-            </div>
-            <h3 class="mt-3 text-[15px] font-extrabold">Akademik xəbərlər və elanlar</h3>
-            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Təhsil sahəsindəki yenilikləri və akademik məlumatları Elm və Təhsil Nazirliyinin rəsmi səhifəsindən izlə.</p>
-            <a href="https://edu.gov.az/az" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#f1f5f9] px-3 text-[13px] font-bold text-[#475569] transition hover:bg-[#e2e8f0]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
-          </article>
-        </div>
-
-        <div id="student-panel-notices" class="hidden grid gap-3 sm:grid-cols-2" role="tabpanel" aria-labelledby="student-tab-notices" tabindex="0" data-student-panel="notices">
-          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
-            <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="grid gap-3 sm:grid-cols-2">
+          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 transition hover:-translate-y-0.5 hover:border-[#d6dde5]">
+            <div class="flex items-center justify-between gap-3">
               <span class="rounded-full bg-[#dcfce7] px-2.5 py-1 text-[11px] font-bold text-[#15803d]">Könüllülük</span>
-              <span class="text-[11px] font-semibold text-muted">Elan əsasında</span>
+              <span class="text-[11px] font-semibold text-muted">Müraciət tarixini yoxla</span>
             </div>
-            <h3 class="mt-3 text-[15px] font-extrabold">ASAN könüllülük proqramı</h3>
-            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Proqramlar, qəbul şərtləri və müraciət tarixləri barədə məlumatı rəsmi ASAN könüllüləri səhifəsində yoxla.</p>
-            <a href="https://asan.gov.az/az/volunteer" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#dcfce7] px-3 text-[13px] font-bold text-[#15803d] transition hover:bg-[#bbf7d0]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
+            <h3 class="mt-3 text-[15px] font-extrabold">ASAN könüllüləri proqramı</h3>
+            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Proqramlar, qəbul şərtləri və açıq müraciətlər barədə ən son məlumatı rəsmi ASAN səhifəsindən öyrən.</p>
+            <a href="https://asan.gov.az/az/volunteer" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#dcfce7] px-3 text-[13px] font-bold text-[#15803d] transition hover:bg-[#bbf7d0]">Elana keçid <span class="ml-1" aria-hidden="true">➔</span></a>
           </article>
-          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="rounded-full bg-[#dcfce7] px-2.5 py-1 text-[11px] font-bold text-[#15803d]">Təcrübə və komanda</span>
-              <span class="text-[11px] font-semibold text-muted">Müddət elana görə</span>
+          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 transition hover:-translate-y-0.5 hover:border-[#d6dde5]">
+            <div class="flex items-center justify-between gap-3">
+              <span class="rounded-full bg-[#dcfce7] px-2.5 py-1 text-[11px] font-bold text-[#15803d]">Təcrübə və iş</span>
+              <span class="text-[11px] font-semibold text-muted">Elanlar mütəmadi yenilənir</span>
             </div>
-            <h3 class="mt-3 text-[15px] font-extrabold">Təcrübə, vakansiya və hakatonlar</h3>
-            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Tələbələr üçün təcrübə imkanlarını, lokal vakansiyaları və hakatonlarda komanda yoldaşı axtarışını izlə.</p>
-            <a href="https://www.linkedin.com/jobs/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#dcfce7] px-3 text-[13px] font-bold text-[#15803d] transition hover:bg-[#bbf7d0]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
-          </article>
-        </div>
-
-        <div id="student-panel-global" class="hidden grid gap-3 sm:grid-cols-2" role="tabpanel" aria-labelledby="student-tab-global" tabindex="0" data-student-panel="global">
-          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="rounded-full bg-[#f3e8ff] px-2.5 py-1 text-[11px] font-bold text-[#7e22ce]">Mübadilə proqramı</span>
-              <span class="text-[11px] font-semibold text-muted">Çağırış dövrünə görə</span>
-            </div>
-            <h3 class="mt-3 text-[15px] font-extrabold">Erasmus+ imkanları</h3>
-            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Tələbə mübadiləsi, təhsil və gənclər proqramları barədə rəsmi Erasmus+ məlumatlarını araşdır.</p>
-            <a href="https://erasmus-plus.ec.europa.eu/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#f3e8ff] px-3 text-[13px] font-bold text-[#7e22ce] transition hover:bg-[#e9d5ff]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
-          </article>
-          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="rounded-full bg-[#f3e8ff] px-2.5 py-1 text-[11px] font-bold text-[#7e22ce]">Könüllülük və təqaüd</span>
-              <span class="text-[11px] font-semibold text-muted">Proqram dövrünə görə</span>
-            </div>
-            <h3 class="mt-3 text-[15px] font-extrabold">ESC və xaricdə təhsil qrantları</h3>
-            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Avropa Həmrəylik Korpusu layihələrini, xaricdə təhsil təqaüdlərini və qrantları rəsmi mənbələrdən yoxla.</p>
-            <a href="https://youth.europa.eu/solidarity_en" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#f3e8ff] px-3 text-[13px] font-bold text-[#7e22ce] transition hover:bg-[#e9d5ff]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
-          </article>
-        </div>
-
-        <div id="student-panel-offers" class="hidden grid gap-3 sm:grid-cols-2" role="tabpanel" aria-labelledby="student-tab-offers" tabindex="0" data-student-panel="offers">
-          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="rounded-full bg-[#fff7ed] px-2.5 py-1 text-[11px] font-bold text-[#c2410c]">Tələbə endirimi</span>
-              <span class="text-[11px] font-semibold text-muted">Uyğunluq şərtləri var</span>
-            </div>
-            <h3 class="mt-3 text-[15px] font-extrabold">GitHub, Notion və Canva</h3>
-            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Tələbələr üçün rəqəmsal alətlərin təhsil planlarını və endirim uyğunluğunu provayderlərin saytında yoxla.</p>
-            <div class="mt-4 flex flex-wrap gap-2">
-              <a href="https://education.github.com/pack" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 flex-1 items-center justify-center rounded-xl bg-[#fff7ed] px-3 text-[12px] font-bold text-[#c2410c] transition hover:bg-[#ffedd5]">GitHub ➔</a>
-              <a href="https://www.notion.so/product/notion-for-education" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 flex-1 items-center justify-center rounded-xl bg-[#fff7ed] px-3 text-[12px] font-bold text-[#c2410c] transition hover:bg-[#ffedd5]">Notion ➔</a>
-              <a href="https://www.canva.com/education/" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-11 flex-1 items-center justify-center rounded-xl bg-[#fff7ed] px-3 text-[12px] font-bold text-[#c2410c] transition hover:bg-[#ffedd5]">Canva ➔</a>
-            </div>
-          </article>
-          <article class="flex min-w-0 flex-col rounded-2xl border border-[#e9edf2] bg-white p-4 shadow-[0_5px_18px_rgba(23,36,58,.04)]">
-            <div class="flex flex-wrap items-center justify-between gap-2">
-              <span class="rounded-full bg-[#fff7ed] px-2.5 py-1 text-[11px] font-bold text-[#c2410c]">Kurs güzəşti</span>
-              <span class="text-[11px] font-semibold text-muted">Təkliflər dəyişə bilər</span>
-            </div>
-            <h3 class="mt-3 text-[15px] font-extrabold">Dil kursları və tələbə təklifləri</h3>
-            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Dil kurslarına və tələbələr üçün xüsusi təkliflərə qoşulmazdan əvvəl qiyməti, müddəti və şərtləri təşkilatçı ilə dəqiqləşdir.</p>
-            <a href="#contact" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#fff7ed] px-3 text-[13px] font-bold text-[#c2410c] transition hover:bg-[#ffedd5]">Ətraflı / Keçid et <span class="ml-1" aria-hidden="true">➔</span></a>
+            <h3 class="mt-3 text-[15px] font-extrabold">Tələbələr üçün təcrübə imkanları</h3>
+            <p class="mt-1 flex-1 text-[13px] leading-5 text-muted">Təcrübə proqramlarını və başlanğıc səviyyəli vakansiyaları araşdır; son tarix və tələbləri elan səhifəsində yoxla.</p>
+            <a href="https://www.linkedin.com/jobs/" target="_blank" rel="noopener noreferrer" class="mt-4 inline-flex min-h-11 items-center justify-center rounded-xl bg-[#dcfce7] px-3 text-[13px] font-bold text-[#15803d] transition hover:bg-[#bbf7d0]">Elanlara bax <span class="ml-1" aria-hidden="true">➔</span></a>
           </article>
         </div>
       </section>
@@ -689,16 +655,6 @@
             <p class="mt-2 text-[12px] text-muted">Faydalı materiallar və tələbələrin təklif etdiyi xidmətlər</p>
           </div>
           <span id="results-count" class="mb-1 text-[13px] font-medium text-muted">6 xidmət</span>
-        </div>
-
-        <div class="mb-5 flex snap-x gap-2 overflow-x-auto pb-2" role="group" aria-label="Xidmətləri kateqoriyaya görə filtrlə">
-          <button class="filter-chip active min-h-11 shrink-0 snap-start rounded-full border border-[#e7ebf0] bg-white px-4 text-[14px] font-semibold text-muted transition hover:border-orange/40" data-category="Hamısı" type="button">Hamısı</button>
-          <button class="filter-chip min-h-11 shrink-0 snap-start rounded-full border border-[#e7ebf0] bg-white px-4 text-[14px] font-semibold text-muted transition hover:border-orange/40" data-category="CV və Motivasiya Məktubu" type="button">CV və məktub</button>
-          <button class="filter-chip min-h-11 shrink-0 snap-start rounded-full border border-[#e7ebf0] bg-white px-4 text-[14px] font-semibold text-muted transition hover:border-orange/40" data-category="Konspekt və İmtahan Qeydləri" type="button">Konspektlər</button>
-          <button class="filter-chip min-h-11 shrink-0 snap-start rounded-full border border-[#e7ebf0] bg-white px-4 text-[14px] font-semibold text-muted transition hover:border-orange/40" data-category="Yazı Planı və Redaktə Dəstəyi" type="button">Yazı və redaktə</button>
-          <button class="filter-chip min-h-11 shrink-0 snap-start rounded-full border border-[#e7ebf0] bg-white px-4 text-[14px] font-semibold text-muted transition hover:border-orange/40" data-category="Rəqəmsal Kod və IT Layihələr" type="button">Kod və IT</button>
-          <button class="filter-chip min-h-11 shrink-0 snap-start rounded-full border border-[#e7ebf0] bg-white px-4 text-[14px] font-semibold text-muted transition hover:border-orange/40" data-category="Qrafik Dizayn & UI/UX Şablonları" type="button">Dizayn</button>
-          <button class="filter-chip min-h-11 shrink-0 snap-start rounded-full border border-[#e7ebf0] bg-white px-4 text-[14px] font-semibold text-muted transition hover:border-orange/40" data-category="Xarici Dil və Tərcümə Xidməti" type="button">Tərcümə</button>
         </div>
 
         <!-- Verified rating markup can be added to each card's price row once real reviews exist. -->
@@ -947,47 +903,7 @@
     </dialog>
 
     <script>
-      const studentTabs = [...document.querySelectorAll("[data-student-tab]")];
-      const studentPanels = [...document.querySelectorAll("[data-student-panel]")];
-
-      function activateStudentTab(tab, moveFocus = false) {
-        const selectedKey = tab.dataset.studentTab;
-        studentTabs.forEach((item) => {
-          const isSelected = item === tab;
-          item.setAttribute("aria-selected", String(isSelected));
-          item.tabIndex = isSelected ? 0 : -1;
-          item.classList.toggle("bg-white", !isSelected);
-          item.classList.toggle("bg-[#eff6ff]", isSelected && selectedKey === "education");
-          item.classList.toggle("bg-[#f1f5f9]", isSelected && selectedKey === "news");
-          item.classList.toggle("bg-[#dcfce7]", isSelected && selectedKey === "notices");
-          item.classList.toggle("bg-[#f3e8ff]", isSelected && selectedKey === "global");
-          item.classList.toggle("bg-[#fff7ed]", isSelected && selectedKey === "offers");
-          item.classList.toggle("shadow-[0_4px_12px_rgba(23,36,58,.08)]", isSelected);
-        });
-        studentPanels.forEach((panel) => {
-          const isActive = panel.dataset.studentPanel === selectedKey;
-          panel.classList.toggle("hidden", !isActive);
-          panel.hidden = !isActive;
-        });
-        if (moveFocus) tab.focus();
-      }
-
-      studentTabs.forEach((tab, index) => {
-        tab.addEventListener("click", () => activateStudentTab(tab));
-        tab.addEventListener("keydown", (event) => {
-          let nextIndex = index;
-          if (event.key === "ArrowRight") nextIndex = (index + 1) % studentTabs.length;
-          else if (event.key === "ArrowLeft") nextIndex = (index - 1 + studentTabs.length) % studentTabs.length;
-          else if (event.key === "Home") nextIndex = 0;
-          else if (event.key === "End") nextIndex = studentTabs.length - 1;
-          else return;
-          event.preventDefault();
-          activateStudentTab(studentTabs[nextIndex], true);
-        });
-      });
-
       const productCards = [...document.querySelectorAll(".product-card")];
-      const categoryControls = [...document.querySelectorAll(".filter-chip")];
       const noResults = document.querySelector("#no-results");
       const resultsCount = document.querySelector("#results-count");
       const toast = document.querySelector("#toast");
@@ -1013,11 +929,6 @@
 
       function setCategory(category) {
         activeCategory = category;
-        categoryControls.forEach((control) => {
-          const isActive = control.dataset.category === category;
-          control.classList.toggle("active", isActive);
-          control.setAttribute("aria-pressed", String(isActive));
-        });
         updateProducts();
       }
 
@@ -1139,14 +1050,7 @@
         });
       });
 
-      categoryControls.forEach((control) => {
-        control.addEventListener("click", () => {
-          setCategory(control.dataset.category);
-          track("category_filter", { category: control.dataset.category });
-          document.querySelector("#products").scrollIntoView({ behavior: "smooth" });
-        });
-      });
-      setCategory(activeCategory);
+      updateProducts();
 
       document.querySelectorAll("#faq details").forEach((item, index) => {
         item.addEventListener("toggle", () => {
