@@ -36,21 +36,34 @@
     </script>
     <meta
       name="description"
-      content="DigiTələbə — tələbələr üçün xidmət, dərs, konspekt və dəstək bazarı. Sifarişini bizimlə dəqiqləşdir."
+      content="Tələbələr üçün frilans xidmətlər, konspekt və dərs qeydləri, CV, dizayn, proqramlaşdırma və tərcümə. Elanlara bax, xidmətini təklif et — DigiTələbə."
     />
-    <link rel="canonical" href="./" />
-    <meta property="og:title" content="DigiTələbə — Tələbə bazarı" />
-    <meta property="og:description" content="Tələbələr üçün xidmət, dərs, konspekt və dəstək bazarı." />
+    <meta
+      name="keywords"
+      content="tələbə frilans, tələbə freelancer, tələbə xidmətləri, konspekt satışı, dərs qeydləri, tələbə layihələri, startap vitrini, CV hazırlama, dizayn xidməti, proqramlaşdırma xidməti, DigiTələbə, tələbə bazarı"
+    />
+    <link rel="canonical" href="https://digitelebe.online/" />
+    <meta property="og:title" content="Tələbə frilans və xidmət bazarı | DigiTələbə" />
+    <meta
+      property="og:description"
+      content="Tələbələr üçün frilans xidmətlər, konspekt və dərs qeydləri, CV, dizayn, proqramlaşdırma və tərcümə. Elanlara bax, xidmətini təklif et."
+    />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="./" />
-    <meta property="og:image" content="./og-image.png" />
+    <meta property="og:site_name" content="DigiTələbə" />
+    <meta property="og:url" content="https://digitelebe.online/" />
+    <meta property="og:image" content="https://digitelebe.online/og-image.png" />
+    <meta property="og:image:alt" content="DigiTələbə — tələbə xidmətləri və frilans bazarı" />
     <meta property="og:locale" content="az_AZ" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="DigiTələbə — Tələbə bazarı" />
-    <meta name="twitter:description" content="Tələbələr üçün xidmət, dərs, konspekt və dəstək bazarı." />
-    <meta name="twitter:image" content="./og-image.png" />
+    <meta name="twitter:title" content="Tələbə frilans və xidmət bazarı | DigiTələbə" />
+    <meta
+      name="twitter:description"
+      content="Tələbələr üçün frilans xidmətlər, konspekt və dərs qeydləri, CV, dizayn, proqramlaşdırma və tərcümə."
+    />
+    <meta name="twitter:image" content="https://digitelebe.online/og-image.png" />
+    <meta name="twitter:image:alt" content="DigiTələbə — tələbə xidmətləri və frilans bazarı" />
     <meta name="theme-color" content="#fffaf7" />
-    <title>DigiTələbə — Tələbə bazarı</title>
+    <title>Tələbə frilans və xidmət bazarı | DigiTələbə</title>
     <link rel="stylesheet" href="./styles.css?v=4" />
     <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
     <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
@@ -61,12 +74,39 @@
       rel="stylesheet"
     />
     <script>
-      const canonicalUrl =
-        window.location.origin === "null"
-          ? window.location.href.split(/[?#]/, 1)[0]
-          : `${window.location.origin}${window.location.pathname}`;
+      const siteUrl = "https://digitelebe.online/";
+      const canonicalPath = window.location.pathname.endsWith("/index.html")
+        ? "/"
+        : window.location.pathname;
+      const canonicalUrl = new URL(canonicalPath, siteUrl).href;
       document.querySelector('link[rel="canonical"]').href = canonicalUrl;
       document.querySelector('meta[property="og:url"]').content = canonicalUrl;
+      document.querySelector('meta[property="og:image"]').content = new URL("og-image.png", siteUrl).href;
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://digitelebe.online/#organization",
+            "name": "DigiTələbə",
+            "url": "https://digitelebe.online/",
+            "description": "Tələbələr üçün frilans xidmətlər, dərs materialları və tələbə təşəbbüsləri platforması.",
+            "inLanguage": "az"
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://digitelebe.online/#website",
+            "url": "https://digitelebe.online/",
+            "name": "DigiTələbə",
+            "inLanguage": "az",
+            "publisher": {
+              "@id": "https://digitelebe.online/#organization"
+            }
+          }
+        ]
+      }
     </script>
     <style>
       @view-transition {
@@ -907,6 +947,42 @@
 
     <script>
       const productCards = [...document.querySelectorAll(".product-card")];
+      const serviceCatalog = productCards
+        .map((card) => {
+          const name = card.dataset.product?.trim();
+          const category = card.dataset.category?.trim();
+          const price = Number(card.dataset.price);
+          if (!name || !category || !Number.isFinite(price) || price <= 0) return null;
+
+          return {
+            "@type": "Service",
+            name,
+            serviceType: category,
+            provider: { "@id": "https://digitelebe.online/#organization" },
+            offers: {
+              "@type": "Offer",
+              price,
+              priceCurrency: "AZN",
+              url: `${canonicalUrl}#products`,
+              ...(card.dataset.priceFrom === "true"
+                ? { description: "Göstərilən qiymət başlanğıc qiymətdir." }
+                : {}),
+            },
+          };
+        })
+        .filter(Boolean);
+      if (serviceCatalog.length) {
+        const serviceStructuredData = document.createElement("script");
+        serviceStructuredData.type = "application/ld+json";
+        serviceStructuredData.textContent = JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "OfferCatalog",
+          "@id": `${canonicalUrl}#services`,
+          name: "DigiTələbə tələbə xidmətləri",
+          itemListElement: serviceCatalog,
+        });
+        document.head.append(serviceStructuredData);
+      }
       const newCards = productCards.filter((card) => card.dataset.new === "true");
       document.querySelector("#product-grid").prepend(...newCards);
       const noResults = document.querySelector("#no-results");
